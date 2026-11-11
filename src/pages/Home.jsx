@@ -91,10 +91,10 @@ export default function Home({ onOpenBrochure }) {
           </div>
         </div>
 
-        {/* Transparent Overlay - Left side is transparent so campus banner photos are fully visible */}
+        {/* Transparent Overlay - Left side is transparent so campus banner photos are 100% visible */}
         <div className="absolute inset-0 z-10 pointer-events-none">
           <div 
-            className="h-full w-full bg-gradient-to-r from-white/10 via-transparent to-black/10" 
+            className="h-full w-full bg-gradient-to-r from-transparent via-transparent to-black/15" 
           />
         </div>
 
@@ -127,11 +127,11 @@ export default function Home({ onOpenBrochure }) {
               </span>
             </div>
 
-            {/* Main Headline in Single Deep Blue with hover scale transition */}
+            {/* Main Headline with exact design colors, typography, hover transitions & animations from aisigh-sd.co.in */}
             <h1 
               data-aos="fade-right"
-              className="text-xl sm:text-2xl md:text-3xl lg:text-[36px] xl:text-[40px] font-bold leading-tight text-blue-900 hover:text-blue-700 hover:scale-105 transition-all duration-300 cursor-pointer"
-              style={{ textShadow: "0 1px 3px rgba(255,255,255,0.9), 0 2px 8px rgba(255,255,255,0.7)" }}
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-bold leading-tight text-blue-900 hover:text-blue-600 hover:scale-105 transition-all duration-300 cursor-pointer"
+              style={{ textShadow: "0 1px 3px rgba(255,255,255,0.9)" }}
             >
               AI-Enabled Smart Solutions <br />
               for Industry, Governance, Healthcare <br />
@@ -366,7 +366,7 @@ export default function Home({ onOpenBrochure }) {
               </h3>
 
               {/* Responsive 3D Flip Card Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {TOURISM_DESTINATIONS.map((item) => (
                   <div 
                     key={item.id} 
@@ -384,26 +384,34 @@ export default function Home({ onOpenBrochure }) {
                       {/* Front Card Face */}
                       <div 
                         className="absolute inset-0 rounded-2xl overflow-hidden shadow-lg backface-hidden"
+                        style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
                       >
                         <img 
                           src={item.image} 
                           alt={item.name} 
                           className="absolute inset-0 w-full h-full object-cover" 
                           loading="lazy"
+                          decoding="async"
                         />
-                        <div className="absolute inset-0 bg-black/40" />
-                        <div className="absolute bottom-3 left-3 right-3 text-white">
-                          <h4 className="font-bold text-base leading-snug drop-shadow-md">{item.name}</h4>
-                          <p className="text-xs text-amber-300 font-medium drop-shadow-sm">{item.distance}</p>
+                        <div className="absolute inset-0 bg-black/30" />
+                        <div className="absolute bottom-4 left-4 right-4 text-white">
+                          <h4 className="font-semibold text-lg leading-snug drop-shadow">{item.name}</h4>
+                          <p className="text-sm drop-shadow opacity-90">{item.distance}</p>
                         </div>
                       </div>
 
                       {/* Back Card Face (Revealed on 3D Flip matching original aisigh-sd.co.in) */}
                       <div 
-                        className="absolute inset-0 rounded-2xl bg-blue-900 text-white p-4 sm:p-5 flex items-center justify-center text-center shadow-xl backface-hidden"
-                        style={{ transform: "rotateY(180deg)" }}
+                        className="absolute inset-0 rounded-2xl bg-blue-900 text-white p-4 sm:p-5 flex items-center justify-center text-center shadow-lg backface-hidden"
+                        style={{
+                          backfaceVisibility: "hidden",
+                          WebkitBackfaceVisibility: "hidden",
+                          transform: "rotateY(180deg)"
+                        }}
                       >
-                        <p className="text-xs sm:text-[13px] font-medium leading-relaxed">{item.history}</p>
+                        <p className="text-xs sm:text-[13px] md:text-sm font-normal leading-relaxed max-h-full overflow-hidden select-none">
+                          {item.history}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -419,33 +427,37 @@ export default function Home({ onOpenBrochure }) {
 
 
       {/* ======================= SCHEDULE & MARQUEE ANNOUNCEMENT (#schedule) ======================= */}
-      <section id="schedule" className="py-20 bg-[#E7ECFF] border-t border-blue-200 overflow-x-hidden scroll-mt-20">
-        <div className="max-w-4xl mx-auto px-4">
+      <section id="schedule" className="py-16 bg-[#E7ECFF] border-t border-blue-200 overflow-x-hidden scroll-mt-20">
+        <div className="max-w-4xl mx-auto px-4" data-aos="fade-up">
           
-          <div className="text-center mb-8" data-aos="fade-up">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading">
-              Important Dates &amp; Milestones
+          <div className="text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">
+              Important Dates
             </h2>
             <p className="text-slate-600 mt-2 text-sm sm:text-base">
-              Paper submission, review notifications, and conference schedule for January 22–24, 2027
+              Paper submission &amp; acceptance milestones
             </p>
           </div>
 
-          {/* Marquee Announcement Ticker */}
-          <div className="mb-10 overflow-hidden bg-blue-700 rounded-xl py-2.5 text-sm font-semibold text-white shadow-md">
-            <div className="flex w-max flex-nowrap animate-deadline-marquee motion-reduce:animate-none">
-              <span className="shrink-0 px-8 tracking-wider whitespace-nowrap">
-                📢 Early Bird Registration for ACIE 2027 is Open! Camera-ready papers will be accepted through our submission portal.
-              </span>
-              <span className="shrink-0 px-8 tracking-wider whitespace-nowrap" aria-hidden="true">
-                📢 Early Bird Registration for ACIE 2027 is Open! Camera-ready papers will be accepted through our submission portal.
-              </span>
-            </div>
+          {/* Marquee Announcement Ticker matching aisigh-sd.co.in */}
+          <div className="flex w-max flex-nowrap animate-deadline-marquee motion-reduce:animate-none">
+            <span className="shrink-0 px-8 tracking-widest whitespace-nowrap text-white font-bold bg-blue-600 py-1.5" aria-hidden="true">
+              📢 Early Bird Registration for the conference has already begun.
+            </span>
+            <span className="shrink-0 px-8 tracking-widest whitespace-nowrap text-white font-bold bg-blue-600 py-1.5" aria-hidden="true">
+              📢 Early Bird Registration for the conference has already begun.
+            </span>
+            <span className="shrink-0 px-8 tracking-widest whitespace-nowrap text-white font-bold bg-blue-600 py-1.5" aria-hidden="true">
+              📢 Early Bird Registration for the conference has already begun.
+            </span>
+            <span className="shrink-0 px-8 tracking-widest whitespace-nowrap text-white font-bold bg-blue-600 py-1.5" aria-hidden="true">
+              📢 Early Bird Registration for the conference has already begun.
+            </span>
           </div>
 
           {/* Timeline Table Box matching original styling exactly from Home-7Lgsr6xV.js */}
-          <div className="flex items-center justify-center p-2" data-aos="fade-up">
-            <div className="w-full max-w-2xl bg-gradient-to-b from-gray-200 to-gray-300 rounded-xl shadow-lg border border-gray-400 overflow-hidden">
+          <div className="flex items-center justify-center p-4 mt-8">
+            <div className="w-full max-w-xl bg-gradient-to-b from-gray-200 to-gray-300 rounded-xl shadow-lg border border-gray-400 overflow-hidden">
               
               {/* Header with decorative dividers in exact orange-600 and orange-800 */}
               <div className="pt-8 pb-4 text-center">
@@ -468,15 +480,15 @@ export default function Home({ onOpenBrochure }) {
               </div>
 
               {/* Table with border-gray-500 matching original */}
-              <div className="px-4 sm:px-8 pb-12">
+              <div className="px-6 pb-12">
                 <div className="border border-gray-500 overflow-hidden bg-transparent">
                   <table className="w-full text-left border-collapse">
                     <thead>
                       <tr className="bg-transparent">
-                        <th className="py-3 px-4 text-base sm:text-xl font-bold text-slate-800 border-r border-b border-gray-500">
+                        <th className="py-3 px-4 text-xl font-bold text-slate-800 border-r border-b border-gray-500">
                           Event
                         </th>
-                        <th className="py-3 px-4 text-base sm:text-xl font-bold text-slate-800 border-b border-gray-500">
+                        <th className="py-3 px-4 text-xl font-bold text-slate-800 border-b border-gray-500">
                           Date
                         </th>
                       </tr>

@@ -19,18 +19,15 @@ export default function Footer() {
                 <span className="text-orange-500 text-base">📍</span>
                 <span>
                   <strong>School of Computer Engineering</strong><br />
-                  Kalinga Institute of Industrial Technology (KIIT)<br />
-                  Patia, Bhubaneswar, Odisha – 751024, India
+                  Centurion University of Technology and Management (CUTM) &amp; KIIT University<br />
+                  Bhubaneswar, Odisha – 751024, India
                 </span>
               </p>
               <p>
                 <strong>Email:</strong> <span className="text-blue-800"> contact@acieopen.com</span>
               </p>
               <p>
-                <strong>Sponsorship Coordinator:</strong>{' '}
-                <span className="text-blue-800 font-semibold">
-                  {CONFERENCE_INFO.sponsorshipCoordinator.name} ({CONFERENCE_INFO.sponsorshipCoordinator.phone})
-                </span>
+                <strong>Contact:</strong> <span className="text-blue-800 font-semibold">+91-9437376421</span>
               </p>
               <p>
                 <strong>Website:</strong>{' '}
@@ -38,8 +35,8 @@ export default function Footer() {
                   acieopen.com
                 </a>{' '}
                 |{' '}
-                <a href="https://kiit.ac.in" target="_blank" rel="noopener noreferrer" className="text-blue-800 hover:underline">
-                  kiit.ac.in
+                <a href="https://www.cutm.ac.in" target="_blank" rel="noopener noreferrer" className="text-blue-800 hover:underline">
+                  cutm.ac.in
                 </a>
               </p>
             </div>
@@ -61,11 +58,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-orange-500 text-sm">✔</span>
-                IEEE COMPUTER SOCIETY CHAPTER
+                IEEE COMPUTER SOCIETY CHAPTER (CH11163)
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-orange-500 text-sm">✔</span>
-                KIIT Deemed to be University
+                Centurion University of Technology and Management
               </li>
             </ul>
           </div>
@@ -76,7 +73,7 @@ export default function Footer() {
       {/* Bottom Copyright Strip matching exact aisigh-sd.co.in styling */}
       <footer className="border-t border-slate-200 bg-white">
         <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center text-sm" data-aos="fade-up" data-aos-delay="300">
-          <span className="text-slate-400">© 2027 ACIE Conference. All rights reserved.</span>
+          <span className="text-slate-400">© 2026–2027 ACIE / AISIGH-SD Conference. All rights reserved.</span>
           <div className="flex gap-6 mt-2 md:mt-0">
             <a href="https://acieopen.com/" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-slate-900 transition">
               Journal
@@ -87,9 +84,9 @@ export default function Footer() {
             <Link to="/registration" className="text-slate-500 hover:text-slate-900 transition">
               Registration
             </Link>
-            <a href="https://kiit.ac.in" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-slate-900 transition">
-              Host University
-            </a>
+            <Link to="/accomodation" className="text-slate-500 hover:text-slate-900 transition">
+              Accomodation
+            </Link>
           </div>
         </div>
       </footer>
