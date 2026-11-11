@@ -194,7 +194,7 @@ export const KEYNOTE_SPEAKERS = [
   },
   {
     id: 8,
-    name: "Dr. Subhas Chinara",
+    name: "Prof. Dr. Subhas Chinara",
     title: "NIT Rourkela, India",
     affiliation: "National Institute of Technology (NIT), Rourkela, India",
     specialty: "Wireless Sensor Networks & Mobile Ad-Hoc Routing",
@@ -453,7 +453,7 @@ export const COMMITTEE = {
   ],
   organizingChairs: [
     {
-      name: "Dr. Subhra Debdas",
+      name: "subhradebdas",
       role: "Organizing Chair & Sponsorship Coordinator",
       designation: "School of Electrical Engineering, KIIT University",
       contact: "subhradebdas | Phone: 1234567890 | Email: sponsorship@acieopen.com"
@@ -493,7 +493,7 @@ export const COMMITTEE = {
     { name: "Dr. Suman Sourav", institution: "Aalborg University, Denmark" },
     { name: "Dr. Akshaya Kumar Moharana", institution: "EEPlus Inc., Texas, USA" },
     { name: "Ms. Padmaja Pulivarthy", institution: "Samsung Semiconductor, USA" },
-    { name: "Dr. Subhas Chinara", institution: "NIT Rourkela, India" },
+    { name: "Prof. Dr. Subhas Chinara", institution: "NIT Rourkela, India" },
     { name: "Mr. Deepak Mathur", institution: "Former IEEE Vice President (MGA)" },
     { name: "Dr. Rasmita Samantaray", institution: "Hyundai Motor Europe Tech Centre, Germany" }
   ]

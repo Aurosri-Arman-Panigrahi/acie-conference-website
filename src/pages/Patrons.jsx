@@ -160,7 +160,7 @@ export default function Patrons() {
               <li>Prof. Sanjib Kumar Nayak, VSSUT, Burla, India</li>
               <li>Prof. Atul Vikas Lakra, VSSUT, Burla, India</li>
               <li>Prof. Santosh Kumar Majhi, Guru Ghasidas Vishwavidyalaya Bilaspur,India</li>
-              <li>Dr. Subhas Chinara, NIT Rourkela, India</li>
+              <li>Prof. Dr. Subhas Chinara, NIT Rourkela, India</li>
             </ul>
           </div>
 
@@ -204,9 +204,8 @@ export default function Patrons() {
           <div className="mb-8" data-aos="fade-up">
             <h3 className="text-2xl font-bold text-slate-900 mb-2">Industry and Sponsorship chairs:</h3>
             <ul className="list-disc list-inside space-y-1">
-              <li>Prof. Rakesh Kumar Ray, CUTM, Odisha, India</li>
-              <li>Prof. Jyoti Prakash Giri, CUTM, Odisha, India</li>
-              <li>Prof. Deepak Kumar Sahu, CUTM, Odisha, India</li>
+              <li>subhradebdas (Phone: 1234567890, Email: sponsorship@acieopen.com) – Sponsorship Coordinator</li>
+              <li>Prof. Subhra Debdas, KIIT University, India</li>
             </ul>
           </div>
 

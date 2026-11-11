@@ -167,7 +167,7 @@ def build_brochure():
         align=3
     )
     
-    # 4. Committee & Speakers (NO Suchismita Chinara; Dr. Subhas Chinara, NIT Rourkela; sponsorship coordinator subhradebdas)
+    # 4. Committee & Speakers (Prof. Dr. Subhas Chinara, NIT Rourkela; sponsorship coordinator subhradebdas)
     committee_entries = [
         ("Honorary Chairs:", True),
         ("Prof. Ganapati Panda, Ex Director IIT Bhubaneswar", False),

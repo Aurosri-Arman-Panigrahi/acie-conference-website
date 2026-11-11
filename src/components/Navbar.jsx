@@ -47,31 +47,25 @@ export default function Navbar({ onOpenBrochure }) {
 
   return (
     <nav className="fixed top-0 left-0 w-full h-20 z-50 bg-[#E7ECFF] border-b border-blue-200 shadow-xs" ref={dropdownRef}>
-      <div className="max-w-[1720px] mx-auto px-2 sm:px-4 lg:px-4 xl:px-6 h-full">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-2.5 xl:px-6 2xl:px-8 h-full">
         <div className="flex justify-between items-center h-full gap-1.5 xl:gap-2">
           
-          {/* Logo Brands (Official ACIE Logo from acie logo folder) */}
+          {/* Logo Brand (Official ACIE Logo from acie logo folder) */}
           <Link to="/" className="flex items-center gap-2 shrink-0 py-1 group">
             <img 
               src="/assets/images/logos/acie-official-logo-transparent.png" 
               alt="ACIE 2027 Logo" 
               className="h-8 sm:h-9 xl:h-10 w-auto object-contain transition-transform duration-200 group-hover:scale-105" 
             />
-            <div className="hidden 2xl:block h-6 w-[1.5px] bg-blue-300" />
-            <img 
-              src="/assets/images/logos/kiit-official-logo.webp" 
-              alt="KIIT University Logo" 
-              className="h-7 lg:h-8 xl:h-9 w-auto object-contain hidden 2xl:block" 
-            />
           </Link>
 
           {/* Desktop Navigation Links & Action Buttons (One Single Exact Row matching aisigh-sd.co.in) */}
-          <div className="hidden lg:flex items-center space-x-1 xl:space-x-2 2xl:space-x-3.5 flex-nowrap shrink-0">
+          <div className="hidden lg:flex items-center space-x-0.5 xl:space-x-1.5 2xl:space-x-2 flex-nowrap shrink-0">
             
             {/* HOME */}
             <Link 
               to="/" 
-              className="nav-link whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
+              className="nav-link whitespace-nowrap !text-[10.5px] xl:!text-[12px] 2xl:!text-[13px] font-semibold px-0.5 xl:px-1 py-1"
             >
               HOME
             </Link>
@@ -84,7 +78,7 @@ export default function Navbar({ onOpenBrochure }) {
             >
               <button 
                 onClick={() => setActiveDropdown(activeDropdown === 'about' ? null : 'about')}
-                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
+                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap !text-[10.5px] xl:!text-[12px] 2xl:!text-[13px] font-semibold px-0.5 xl:px-1 py-1"
               >
                 <span>ABOUT</span>
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === 'about' ? 'rotate-180' : ''}`} />
@@ -119,7 +113,7 @@ export default function Navbar({ onOpenBrochure }) {
             >
               <button 
                 onClick={() => setActiveDropdown(activeDropdown === 'authors' ? null : 'authors')}
-                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
+                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap !text-[10.5px] xl:!text-[12px] 2xl:!text-[13px] font-semibold px-0.5 xl:px-1 py-1"
               >
                 <span>AUTHORS</span>
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === 'authors' ? 'rotate-180' : ''}`} />
@@ -162,7 +156,7 @@ export default function Navbar({ onOpenBrochure }) {
             >
               <button 
                 onClick={() => setActiveDropdown(activeDropdown === 'speakers' ? null : 'speakers')}
-                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
+                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap !text-[10.5px] xl:!text-[12px] 2xl:!text-[13px] font-semibold px-0.5 xl:px-1 py-1"
               >
                 <span>SPEAKERS</span>
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === 'speakers' ? 'rotate-180' : ''}`} />
@@ -200,7 +194,7 @@ export default function Navbar({ onOpenBrochure }) {
             {/* COMMITTEE */}
             <Link 
               to="/patrons" 
-              className="nav-link whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
+              className="nav-link whitespace-nowrap !text-[10.5px] xl:!text-[12px] 2xl:!text-[13px] font-semibold px-0.5 xl:px-1 py-1"
             >
               COMMITTEE
             </Link>
@@ -213,7 +207,7 @@ export default function Navbar({ onOpenBrochure }) {
             >
               <button 
                 onClick={() => setActiveDropdown(activeDropdown === 'awards' ? null : 'awards')}
-                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
+                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap !text-[10.5px] xl:!text-[12px] 2xl:!text-[13px] font-semibold px-0.5 xl:px-1 py-1"
               >
                 <span>AWARDS</span>
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === 'awards' ? 'rotate-180' : ''}`} />
@@ -258,7 +252,7 @@ export default function Navbar({ onOpenBrochure }) {
             {/* ACCOMODATION */}
             <Link 
               to="/accomodation" 
-              className="nav-link whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
+              className="nav-link whitespace-nowrap !text-[10.5px] xl:!text-[12px] 2xl:!text-[13px] font-semibold px-0.5 xl:px-1 py-1"
             >
               ACCOMODATION
             </Link>
@@ -266,7 +260,7 @@ export default function Navbar({ onOpenBrochure }) {
             {/* SCHEDULE */}
             <button 
               onClick={() => handleAnchorClick('schedule')}
-              className="nav-link cursor-pointer whitespace-nowrap uppercase text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
+              className="nav-link cursor-pointer whitespace-nowrap uppercase !text-[10.5px] xl:!text-[12px] 2xl:!text-[13px] font-semibold px-0.5 xl:px-1 py-1"
             >
               SCHEDULE
             </button>
@@ -274,16 +268,15 @@ export default function Navbar({ onOpenBrochure }) {
             {/* SPONSORSHIP */}
             <Link 
               to="/sponsership" 
-              className="nav-link whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
+              className="nav-link whitespace-nowrap !text-[10.5px] xl:!text-[12px] 2xl:!text-[13px] font-semibold px-0.5 xl:px-1 py-1"
             >
               SPONSORSHIP
             </Link>
 
             {/* REGISTRATION SOLID BLUE PILL */}
             <Link to="/registration" className="shrink-0">
-              <button className="bg-blue-600 text-white px-3 sm:px-3.5 xl:px-4 2xl:px-5 py-1.5 xl:py-2 rounded-full text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer">
-                <span className="hidden 2xl:inline">Register Online</span>
-                <span className="2xl:hidden">REGISTRATION</span>
+              <button className="bg-blue-600 text-white px-2.5 xl:px-4 2xl:px-5 py-1.5 xl:py-2 rounded-full text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer">
+                REGISTRATION
               </button>
             </Link>
 
@@ -299,10 +292,9 @@ export default function Navbar({ onOpenBrochure }) {
             >
               <button 
                 type="button"
-                className="bg-blue-600 text-white px-3 sm:px-3.5 xl:px-4 2xl:px-5 py-1.5 xl:py-2 rounded-full text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer"
+                className="bg-blue-600 text-white px-2.5 xl:px-4 2xl:px-5 py-1.5 xl:py-2 rounded-full text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer"
               >
-                <span className="hidden 2xl:inline">Official Brochure</span>
-                <span className="2xl:hidden">BROCHURE</span>
+                BROCHURE
               </button>
             </a>
 
@@ -517,17 +509,20 @@ export default function Navbar({ onOpenBrochure }) {
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full text-center bg-blue-600 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-blue-900 transition"
               >
-                Register Online
+                REGISTRATION
               </Link>
 
               <a
                 href="/assets/brochure/ACIE-2027-Brochure.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenBrochure) onOpenBrochure();
+                }}
                 className="w-full text-center bg-blue-600 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-blue-900 transition"
               >
-                Official Brochure
+                BROCHURE
               </a>
             </div>
 

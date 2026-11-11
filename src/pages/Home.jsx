@@ -91,12 +91,8 @@ export default function Home({ onOpenBrochure }) {
           </div>
         </div>
 
-        {/* Transparent Overlay - Left side is transparent so campus banner photos are 100% visible */}
-        <div className="absolute inset-0 z-10 pointer-events-none">
-          <div 
-            className="h-full w-full bg-gradient-to-r from-transparent via-transparent to-black/15" 
-          />
-        </div>
+        {/* Transparent container - no white background overlay so only text and slides remain */}
+        <div className="absolute inset-0 z-10 pointer-events-none bg-transparent" />
 
         {/* Hero Content with exact AOS animations & hover transforms */}
         <section className="relative z-20 h-full flex items-center">
@@ -131,7 +127,7 @@ export default function Home({ onOpenBrochure }) {
             <h1 
               data-aos="fade-right"
               className="text-xl sm:text-2xl md:text-3xl lg:text-[36px] xl:text-[38px] font-bold leading-tight text-blue-900 hover:text-blue-600 hover:scale-105 transition-all duration-300 cursor-pointer"
-              style={{ textShadow: "0 1px 3px rgba(255,255,255,0.9)" }}
+              style={{ textShadow: "0 1px 4px rgba(255,255,255,0.95), 0 2px 8px rgba(255,255,255,0.85)" }}
             >
               AI-Enabled Smart Solutions <br />
               for Industry, Governance, Healthcare <br />
@@ -142,7 +138,7 @@ export default function Home({ onOpenBrochure }) {
             <p 
               data-aos="fade-left"
               className="mt-6 font-semibold text-base sm:text-lg text-slate-800 hover:text-blue-900 hover:no-underline transition duration-300 cursor-pointer"
-              style={{ textShadow: "0 1px 2px rgba(255,255,255,0.9)" }}
+              style={{ textShadow: "0 1px 3px rgba(255,255,255,0.95), 0 2px 6px rgba(255,255,255,0.85)" }}
             >
               Kalinga Institute of Industrial Technology, Bhubaneswar
             </p>
