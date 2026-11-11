@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="kiitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+  </defs>
+  <!-- KIIT University Crest Emblem -->
+  <g transform="translate(10, 10)">
+    <circle cx="50" cy="50" r="46" fill="#F0FDF4" stroke="#059669" stroke-width="3" />
+    <circle cx="50" cy="50" r="41" fill="none" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4,2" />
+    <!-- Flaming Torch of Knowledge & Open Book -->
+    <path d="M35 70 Q50 64 65 70 L65 52 Q50 48 35 52 Z" fill="#047857" />
+    <path d="M50 50 L50 72" stroke="#FFFFFF" stroke-width="2" />
+    <!-- Rising Flame -->
+    <path d="M50 20 C42 32 40 38 46 45 C48 40 52 40 54 45 C60 38 58 32 50 20 Z" fill="#F59E0B" />
+    <path d="M50 25 C46 32 45 36 49 41 C50 38 51 38 52 41 C55 36 54 32 50 25 Z" fill="#EF4444" />
+    <!-- Star at Top -->
+    <circle cx="50" cy="14" r="2.5" fill="#059669" />
+  </g>
+  <text x="120" y="46" font-family="'Outfit', 'Inter', sans-serif" font-weight="900" font-size="36" fill="#047857" letter-spacing="1">
+    KIIT <tspan font-size="20" font-weight="700" fill="#059669">UNIVERSITY</tspan>
+  </text>
+  <text x="120" y="70" font-family="'Inter', sans-serif" font-weight="700" font-size="12" fill="#065F46" letter-spacing="0.5">
+    KALINGA INSTITUTE OF INDUSTRIAL TECHNOLOGY
+  </text>
+  <text x="120" y="88" font-family="'Inter', sans-serif" font-weight="500" font-size="10.5" fill="#64748B">
+    Deemed to be University • Bhubaneswar, Odisha, India (NIRF Ranked #16)
+  </text>
+</svg>

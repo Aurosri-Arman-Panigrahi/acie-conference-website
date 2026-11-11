@@ -1,0 +1,136 @@
+@import 'aos/dist/aos.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white;
+  }
+}
+
+/* 1:1 Navigation & Dropdown Link Classes matching original site */
+.nav-link {
+  position: relative;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .025em;
+  color: rgb(30, 41, 59);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .3s;
+}
+
+.nav-link:hover {
+  transform: translateY(-2px);
+  color: #2563eb;
+}
+
+.dropdown-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(51, 65, 85);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .3s;
+}
+
+.dropdown-link:hover {
+  color: #2563eb;
+  background-color: rgba(219, 234, 254, 0.6);
+  transform: translateX(4px);
+}
+
+/* 3D Perspective & Preservation for Flip Cards */
+.perspective-1000 {
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Custom Text Shadows matching original academic hero */
+.text-shadow-hero {
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45), 4px 4px 0 rgba(0, 0, 0, 0.35);
+}
+
+.text-shadow-sub {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Custom Keyframe Animations from original site */
+@keyframes carousel {
+  0% { transform: translate(0); }
+  to { transform: translate(-50%); }
+}
+
+.animate-carousel {
+  animation: carousel 35s linear infinite;
+}
+
+@keyframes deadline-marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-deadline-marquee {
+  animation: deadline-marquee 20s linear infinite;
+}
+
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 6s ease-in-out infinite;
+}
+
+@keyframes bounceSlower {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-bounce-slower {
+  animation: bounceSlower 8s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* Custom Loading Spinner / Bar */
+@keyframes shimmerLoad {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-loader {
+  background: linear-gradient(90deg, rgba(37,99,235,0.1) 25%, rgba(37,99,235,0.3) 50%, rgba(37,99,235,0.1) 75%);
+  background-size: 200% 100%;
+  animation: shimmerLoad 1.5s infinite;
+}
+
+/* Pause animations on hover */
+.pause-hover:hover {
+  animation-play-state: paused;
+}

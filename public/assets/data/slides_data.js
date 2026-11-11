@@ -1,0 +1,1239 @@
+// Generated Conference Presentation Data
+window.SLIDES_DATA = {
+  "paper1": {
+    "id": "paper1",
+    "title": "Performance Benchmarking of CRYSTALS-Dilithium (FIPS 204) on ARM Cortex-M4 for Agricultural IoT Authentication",
+    "short_title": "Dilithium PQC on ARM Cortex-M4",
+    "track": "Agricultural IoT Security & Post-Quantum Cryptography",
+    "authors": "Subhra Debdas, Swastik Panda, Prabhu Krupa Biswal, Aayush Saha, Sucharita Pradhan, Samir Kumar Panigrahi",
+    "affiliations": "School of Computer Science & Engineering and School of Electrical Engineering, KIIT Deemed to be University, Bhubaneswar, India",
+    "contact": "swastik.panda@kiit.ac.in | subhra.debdasfee@kiit.ac.in",
+    "slides": [
+      {
+        "slide_num": 1,
+        "type": "title",
+        "title": "Performance Benchmarking of CRYSTALS-Dilithium (FIPS 204) on ARM Cortex-M4",
+        "subtitle": "Post-Quantum Digital Signatures for Resource-Constrained Agricultural IoT Nodes",
+        "bullets": [
+          "Subhra Debdas, Swastik Panda, Prabhu Krupa Biswal, Aayush Saha, Sucharita Pradhan, Samir Kumar Panigrahi",
+          "School of Computer Science & Engineering | School of Electrical Engineering",
+          "Kalinga Institute of Industrial Technology (KIIT) Deemed to be University, Bhubaneswar, India",
+          "Official Contact: swastik.panda@kiit.ac.in | subhra.debdasfee@kiit.ac.in"
+        ],
+        "metrics": [
+          {
+            "label": "Standard",
+            "val": "FIPS 204 (Aug 2024)"
+          },
+          {
+            "label": "Target MCU",
+            "val": "ARM Cortex-M4 @ 168 MHz"
+          },
+          {
+            "label": "Primary Security",
+            "val": "NIST Level 2, 3, 5"
+          }
+        ],
+        "diagram_type": "title_lattice",
+        "script": "Good day, distinguished peers and conference attendees. I am presenting our work titled: Performance Benchmarking of CRYSTALS-Dilithium on ARM Cortex-M4 for Agricultural IoT Authentication. Following NIST's standardization of Dilithium as FIPS 204 in August 2024, our investigation addresses a decisive operational question: can post-quantum lattice-based digital signatures practically execute on low-cost microcontroller silicon inside real-world agricultural IoT nodes? Over the next ten minutes, I will guide you through our empirical evaluation on the STM32F407 microchip, demonstrating how Dilithium achieves superior energy and latency performance while identifying an efficient hybrid protocol to overcome LoRaWAN bandwidth bottlenecks."
+      },
+      {
+        "slide_num": 2,
+        "type": "agenda",
+        "title": "Presentation Agenda & Roadmap",
+        "subtitle": "Structured Evaluation of Lattice-Based PQC on Edge Silicon",
+        "bullets": [
+          "Research Problem: Quantum vulnerabilities in agricultural field telemetry",
+          "Motivation & Stakes: Long-lifecycle sensors vs. 'Harvest Now, Decrypt Later'",
+          "Direct Gap Map: Evaluating PQC overhead under LoRaWAN packet boundaries",
+          "Methodology: STM32F407 benchmarking across seven hardware metrics",
+          "Key Findings: Dilithium2 vs ECDSA P-256 and RSA-2048 cycle & energy proofs",
+          "Validation & Hybrid Solution: Dilithium/HMAC protocol resolving MTU constraints",
+          "Deployment Recommendations, Limitations & Future ASIC Roadmap"
+        ],
+        "metrics": [
+          {
+            "label": "Scope",
+            "val": "7 Hardware Metrics"
+          },
+          {
+            "label": "Baselines",
+            "val": "RSA-2048 & ECDSA P-256"
+          },
+          {
+            "label": "Trials",
+            "val": "n = 1,000 runs"
+          }
+        ],
+        "diagram_type": "agenda_flow",
+        "script": "Here is an outline of our presentation. We begin with the foundational research problem: why existing agricultural sensors are acutely vulnerable to quantum cryptanalysis. We then establish why this matters for food security infrastructure under the threat of harvest-now-decrypt-later attacks. After positioning our study against prior embedded benchmarks, we explain our hardware benchmarking methodology on the ARM Cortex-M4. We then examine our primary findings on cycle counts, execution latency, and energy per signature, followed by secondary validations of gateway duty-cycle feasibility. Finally, we discuss our proposed Dilithium-HMAC hybrid protocol, acknowledge hardware memory limits, and outline our forward roadmap."
+      },
+      {
+        "slide_num": 3,
+        "type": "problem",
+        "title": "Research Problem & Context",
+        "subtitle": "Imminent Quantum Threat to Constrained Agricultural IoT",
+        "bullets": [
+          "Shor's Algorithm Horizon: RSA and Elliptic Curve (ECDSA) fully broken by quantum computers.",
+          "Agricultural Exposure: Remote soil, irrigation, and automated drone telemetry operate unmonitored.",
+          "Microcontroller Silicon Ceiling: Cortex-M4 has only 192 KB SRAM and 1 MB Flash at 168 MHz.",
+          "PQC Resource Penalty: Lattice cryptography requires thousands of polynomial multiplications.",
+          "The Operational Question: Can FIPS 204 Dilithium fit within tight embedded power and RAM budgets?"
+        ],
+        "metrics": [
+          {
+            "label": "SRAM Limit",
+            "val": "192 KB"
+          },
+          {
+            "label": "Flash Limit",
+            "val": "1,024 KB"
+          },
+          {
+            "label": "Clock Speed",
+            "val": "168 MHz"
+          }
+        ],
+        "diagram_type": "quantum_threat",
+        "script": "Let us examine the core research problem. Modern smart agriculture relies on distributed wireless sensor networks deployed across vast fields to automate irrigation, monitor soil nitrogen, and guide autonomous drones. Today, nearly all these systems depend on RSA or Elliptic Curve Cryptography for message integrity. However, Shor's algorithm running on large-scale quantum processors will completely shatter both RSA and ECDSA. While NIST standardized CRYSTALS-Dilithium as FIPS 204 to withstand quantum attacks, lattice-based cryptography is notoriously memory-hungry. Microcontrollers like the ARM Cortex-M4 possess only 192 kilobytes of SRAM. The fundamental question we address is whether Dilithium can operate on this constrained silicon without exhausting battery reserves."
+      },
+      {
+        "slide_num": 4,
+        "type": "motivation",
+        "title": "Why It Matters / Motivation",
+        "subtitle": "National Agricultural Security & Battery Longevity",
+        "bullets": [
+          "'Harvest Now, Decrypt Later' (HNDL): Adversaries capture encrypted sensor logs today for future decryption.",
+          "10+ Year Field Lifecycle: Agricultural sensors remain deployed in soil for a decade without battery replacement.",
+          "Food Grid Vulnerability: Forged actuator commands can spoil crop yields, taint water, or disrupt drone swarms.",
+          "Microjoule Battery Budget: Telemetry must consume negligible fraction of standard 3,000 mAh LiPo cells.",
+          "Urgency: Retrofitting post-quantum trust cannot wait until quantum supremacy arrives."
+        ],
+        "metrics": [
+          {
+            "label": "Sensor Lifespan",
+            "val": "5 to 10 Years"
+          },
+          {
+            "label": "Battery Target",
+            "val": "3,000 mAh LiPo"
+          },
+          {
+            "label": "Reporting Cycle",
+            "val": "Every 5 Minutes"
+          }
+        ],
+        "diagram_type": "motivation_grid",
+        "script": "The urgency of this problem stems from two critical realities: the long operational lifespan of agricultural hardware and the reality of harvest now, decrypt later tactics. Soil moisture, fertilizer monitors, and irrigation valves are buried in fields for five to ten years with no physical maintenance. State or rogue actors can intercept and record wireless telemetry today, awaiting quantum hardware to forge past records or reverse-engineer private keys. Furthermore, false sensor injection could trigger premature watering or toxic fertilizer overdoses, crippling crop yields. Therefore, post-quantum security must be integrated into embedded nodes today, but it must consume microjoules of energy so as not to prematurely drain the primary batteries."
+      },
+      {
+        "slide_num": 5,
+        "type": "lit_review",
+        "title": "Literature Review & Direct Gap Map",
+        "subtitle": "Positioning Dilithium on Ultra-Low-Power Silicon",
+        "bullets": [
+          "High-End PQC Studies (Server/Linux): Focused on Intel x86 and Apple M-series chips; irrelevant to MCUs.",
+          "pqm4 Benchmarking Library: Provided baseline assembly primitives, but lacked agricultural power profiling.",
+          "LoRaWAN MTU Disconnect: Standard LoRaWAN payload is 51 to 222 bytes; Dilithium2 signatures are 2,420 bytes.",
+          "Existing Sensor Networks: Still implement deprecated RSA-2048 or fragile ECDSA P-256.",
+          "Our Gap Contribution: First end-to-end energy, cycle, and duty-cycle benchmarking on Cortex-M4 with LoRa framing."
+        ],
+        "metrics": [
+          {
+            "label": "LoRa MTU",
+            "val": "51–222 Bytes"
+          },
+          {
+            "label": "Dilithium2 Sig",
+            "val": "2,420 Bytes"
+          },
+          {
+            "label": "Prior PQC Gap",
+            "val": "Zero Power Profiling"
+          }
+        ],
+        "diagram_type": "gap_map",
+        "script": "Reviewing prior literature reveals a substantial gap. While the cryptography community has benchmarked Dilithium extensively on server processors and high-end ARM Cortex-A application cores, ultra-low-power microcontrollers have received little attention. The open-source pqm4 project established bare-metal assembly optimizations, but provided no real-world energy profiling under operating voltage and current constraints. Crucially, prior works completely ignored the severe physical bandwidth mismatch: LoRaWAN payloads max out between 51 and 222 bytes, whereas a single Dilithium2 signature spans 2,420 bytes. Our paper bridges this divide with rigorous cycle, stack, energy, and wireless transmission benchmarking."
+      },
+      {
+        "slide_num": 6,
+        "type": "objectives",
+        "title": "Research Objectives & Technical Aims",
+        "subtitle": "Three Concrete Experimental Deliverables",
+        "bullets": [
+          "Objective 1: Hardware Benchmarking — Characterize Dilithium2, 3, and 5 on STM32F407 (168 MHz) across 7 metrics.",
+          "Objective 2: Energy & Battery Profiling — Measure active current (87.3 mA @ 3.3V) and calculate daily LiPo depletion.",
+          "Objective 3: Bandwidth Solution — Formulate a hybrid Dilithium/HMAC scheme eliminating multi-frame LoRa fragmentation.",
+          "Baseline Comparison: Directly compare against legacy RSA-2048 and industry-standard ECDSA P-256.",
+          "Statistical Rigor: Execute n = 1,000 pseudo-random trials to guarantee cycle-count convergence."
+        ],
+        "metrics": [
+          {
+            "label": "Objective 1",
+            "val": "7 Hardware Metrics"
+          },
+          {
+            "label": "Objective 2",
+            "val": "3.3V Energy Model"
+          },
+          {
+            "label": "Objective 3",
+            "val": "Hybrid LoRa Protocol"
+          }
+        ],
+        "diagram_type": "objectives_tree",
+        "script": "To resolve these challenges, we formulated three concrete technical objectives. First, to establish an authoritative hardware benchmark for Dilithium parameter sets 2, 3, and 5 on the STM32F407 Cortex-M4 running at 168 megahertz across seven primary dimensions: key generation, signing, verification, peak stack memory, flash footprint, sign energy, and verify energy. Second, to profile exact physical energy consumption at 3.3 volts and 87.3 milliamps, quantifying daily battery draw for standard agricultural duty cycles. Third, to design an elegant hybrid authentication protocol that combines Dilithium session handshakes with lightweight message authentication codes, completely resolving the LoRa fragmentation dilemma."
+      },
+      {
+        "slide_num": 7,
+        "type": "methodology",
+        "title": "Benchmarking Methodology & System Architecture",
+        "subtitle": "Rigorous Bare-Metal Measurement Pipeline",
+        "bullets": [
+          "Target Silicon: STM32F407VGT6 microcontroller (ARM Cortex-M4, 168 MHz, 1 MB Flash, 192 KB SRAM).",
+          "Software Stack: pqm4 assembly routines with hardware Number Theoretic Transform (NTT) acceleration.",
+          "Cycle Counting: On-chip Data Watchpoint and Trace (DWT) cycle counter register (DWT->CYCCNT).",
+          "Power Model: Precision measurement at 3.3V operating voltage, 87.3 mA current draw (288.09 mW active power).",
+          "LoRa Gateway Testbed: European 868 MHz / Indian 865 MHz ISM band with 1% regulatory duty cycle."
+        ],
+        "metrics": [
+          {
+            "label": "DWT Precision",
+            "val": "1 Clock Cycle"
+          },
+          {
+            "label": "Active Power",
+            "val": "288.09 mW"
+          },
+          {
+            "label": "Trial Count",
+            "val": "1,000 Iterations"
+          }
+        ],
+        "diagram_type": "methodology_arch",
+        "script": "Our experimental setup utilizes bare-metal C and optimized ARMv7E-M assembly deployed on the STM32F407 microcontroller. We leverage the on-chip Data Watchpoint and Trace cycle counter to capture cycle counts with single-cycle resolution across one thousand independent runs with randomized inputs. We measure key generation, signing, and verification latency. Physical energy per operation is derived from calibrated shunt measurements of 87.3 milliamps at 3.3 volts, giving an active power consumption of 288.09 milliwatts. For wireless evaluation, we model a SX1276 LoRa transceiver operating on standard agricultural telemetry channels with strict regulatory duty cycles."
+      },
+      {
+        "slide_num": 8,
+        "type": "result_primary",
+        "title": "Key Result 1: Computational & Energy Benchmarks",
+        "subtitle": "Empirical Proof: Dilithium2 Outperforms Legacy RSA-2048",
+        "bullets": [
+          "Keygen Breakthrough: Dilithium2 requires 2.797 Mcycles (16.6 ms) — 319× faster than RSA-2048 (892 Mcycles).",
+          "Signing Latency: Dilithium2 executes in 33.2 ms (5.572 Mcycles) vs 2,654.8 ms for RSA-2048 (80× faster).",
+          "Energy Per Signature: Dilithium2 consumes only 30.6 µJ — 79× lower energy than RSA-2048 (2,448 µJ).",
+          "Verification Speed: Dilithium2 verifies in 11.1 ms (1.87 Mcycles, 10.3 µJ) vs 155.4 ms for ECDSA P-256.",
+          "Daily Battery Impact: Consumes just 0.022% of a 3,000 mAh LiPo on a 5-minute reporting schedule."
+        ],
+        "metrics": [
+          {
+            "label": "Keygen Speedup",
+            "val": "319× vs RSA"
+          },
+          {
+            "label": "Sign Energy",
+            "val": "30.6 µJ (79× Drop)"
+          },
+          {
+            "label": "Daily LiPo Use",
+            "val": "0.022%"
+          }
+        ],
+        "diagram_type": "benchmark_chart",
+        "script": "Now, let us examine our primary quantitative findings, presented in Table 1 of the paper. Dilithium2 demonstrates outstanding performance on the Cortex-M4. Key generation takes just 2.797 megacycles, or 16.6 milliseconds, which is an astounding 319 times faster than RSA-2048. Signing takes 33.2 milliseconds and consumes only 30.6 microjoules of energy, representing an 80-fold latency reduction and a 79-fold energy reduction compared to RSA. Verification requires just 11.1 milliseconds and 10.3 microjoules. Most importantly for field operations, on a standard five-minute soil telemetry schedule, signing with Dilithium2 consumes only 0.022 percent of a 3,000 milliamp-hour battery's daily capacity."
+      },
+      {
+        "slide_num": 9,
+        "type": "result_secondary",
+        "title": "Key Result 2: Gateway Scalability & Hybrid Protocol",
+        "subtitle": "Overcoming the LoRaWAN Bandwidth & Duty-Cycle Ceiling",
+        "bullets": [
+          "Gateway Throughput: Dilithium2's 11.1 ms verify time processes 324,324 packets/hr (vs 23,166 for ECDSA).",
+          "LoRaWAN MTU Bottleneck: 2,420-byte Dilithium signature requires 12 fragments under SF7 (222B MTU).",
+          "Hybrid Protocol Formulation: One daily Dilithium2 mutual handshake establishes an ephemeral AES-128 key.",
+          "Subsequent Packets: Telemetry authenticated via 32-byte HMAC-SHA256 fitting inside single standard frame.",
+          "Airtime & Energy Savings: Reduces daily LoRa radio airtime by 91.4% while maintaining quantum-safe trust."
+        ],
+        "metrics": [
+          {
+            "label": "Max Gateway Pkts",
+            "val": "324,324 / hr"
+          },
+          {
+            "label": "Airtime Reduction",
+            "val": "91.4%"
+          },
+          {
+            "label": "Payload Overhead",
+            "val": "32 B vs 2,420 B"
+          }
+        ],
+        "diagram_type": "hybrid_protocol",
+        "script": "Our secondary finding evaluates network scalability and provides the solution to the LoRa bandwidth constraint. Because Dilithium2 verifies in only 11.1 milliseconds, an agricultural base station gateway can verify up to 324,324 packets per hour, outperforming ECDSA by nearly 14 times. However, transmitting a 2,420-byte signature over LoRaWAN requires 12 fragmented frames, exhausting channel airtime. To solve this, we formulated and evaluated a hybrid protocol: the sensor performs a single Dilithium2 handshake once every 24 hours to establish an ephemeral session key. Subsequent five-minute telemetry messages append a lightweight 32-byte HMAC-SHA256 tag. This reduces daily radio airtime by 91.4 percent while preserving end-to-end post-quantum forward secrecy."
+      },
+      {
+        "slide_num": 10,
+        "type": "discussion",
+        "title": "Discussion & Technical Interpretation",
+        "subtitle": "Why Dilithium Thrives on Cortex-M4 Silicon",
+        "bullets": [
+          "NTT Polynomial Alignment: ARM DSP instructions (SMLABB, SMLABT) execute NTT butterfly steps in 2 cycles.",
+          "Rejection Sampling Overhead: Signing non-determinism requires ~3-5 iterations; bounds worst-case latency.",
+          "Memory Footprint Realities: Dilithium2 consumes 85.4 KB Flash (8.3% of 1MB) and 14.2 KB Stack (7.4% of 192KB).",
+          "Dilithium3 Trade-off: Higher NIST Level 3 security requires 104.2 KB Flash, 18.6 KB Stack, and 50.9 µJ sign.",
+          "Deployment Rule: Dilithium2 is optimal for leaf soil nodes; Dilithium3 recommended for drone-to-gateway links."
+        ],
+        "metrics": [
+          {
+            "label": "Flash Usage",
+            "val": "85.4 KB (8.3%)"
+          },
+          {
+            "label": "Stack Peak",
+            "val": "14.2 KB (7.4%)"
+          },
+          {
+            "label": "DSP Speedup",
+            "val": "2-Cycle Butterfly"
+          }
+        ],
+        "diagram_type": "dsp_ntt",
+        "script": "Let us interpret why Dilithium performs so favorably on the Cortex-M4. The core computational burden of lattice cryptography lies in polynomial vector arithmetic over ring R_q. Because Dilithium utilizes a prime modulus q = 8,380,417, the Number Theoretic Transform can be mapped directly onto the Cortex-M4's SIMD barrel shifter and 32-bit DSP multiply-accumulate instructions, completing radix-2 butterflies in just two cycles. Furthermore, with peak stack usage constrained to 14.2 kilobytes, Dilithium2 occupies less than 8 percent of the available 192 kilobytes of SRAM, leaving ample memory for sensor drivers and real-time operating systems. Dilithium2 provides optimal efficiency for soil nodes, whereas Dilithium3 is suited for higher-value drone authentication."
+      },
+      {
+        "slide_num": 11,
+        "type": "limitations",
+        "title": "Limitations & Future Roadmap",
+        "subtitle": "Honest Appraisal of Hardware & Network Boundaries",
+        "bullets": [
+          "SRAM Stress under Dilithium5: Level 5 consumes 22.1 KB stack and 124.9 KB flash; impractical for small MCUs.",
+          "Physical Side-Channel Attacks (SCA): Unprotected NTT implementations remain vulnerable to power analysis.",
+          "LoRaWAN Standard Integration: Hybrid session re-keying requires custom application-layer state machines.",
+          "Hardware Co-Processor Path: Integrating dedicated lattice crypto-accelerators (RISC-V PQC extensions).",
+          "Field Validation: Ongoing agricultural deployment across 14 precision farming prototypes in Odisha, India."
+        ],
+        "metrics": [
+          {
+            "label": "SCA Protection",
+            "val": "Next Step"
+          },
+          {
+            "label": "Field Prototypes",
+            "val": "14 Sensor Nodes"
+          },
+          {
+            "label": "Target Silicon",
+            "val": "Custom RISC-V ASIC"
+          }
+        ],
+        "diagram_type": "limitations_roadmap",
+        "script": "Maintaining scientific rigor requires acknowledging limitations and open research directions. First, Dilithium5's 22.1-kilobyte stack consumption leaves little margin on smaller microcontrollers with only 32 kilobytes of RAM. Second, our bare-metal assembly implementation does not yet incorporate masked side-channel countermeasures against physical differential power analysis. Third, while our hybrid protocol functions cleanly at the application layer, formal standardization within the LoRaWAN Regional Parameters specification is needed. Our forward work focuses on field trials across 14 precision-farming prototype nodes in Odisha, India, and designing dedicated hardware co-processors for next-generation RISC-V agro-chips."
+      },
+      {
+        "slide_num": 12,
+        "type": "conclusion",
+        "title": "Conclusion & Final Takeaways",
+        "subtitle": "Post-Quantum Security is Production-Ready on the Edge",
+        "bullets": [
+          "Empirical Validation: Proved FIPS 204 Dilithium2 runs efficiently on 168 MHz ARM Cortex-M4 silicon.",
+          "Decisive Superiority: 319× faster keygen, 80× faster sign, and 79× lower energy than legacy RSA-2048.",
+          "Battery Viability: 30.6 µJ sign consumes negligible 0.022% daily capacity of a 3,000 mAh LiPo cell.",
+          "Bandwidth Solved: Hybrid Dilithium/HMAC architecture slashes wireless airtime by 91.4%.",
+          "Open Reproducibility: Benchmarking source code, test vectors, and firmware scripts available on GitHub."
+        ],
+        "metrics": [
+          {
+            "label": "Status",
+            "val": "Field Ready"
+          },
+          {
+            "label": "Code Availability",
+            "val": "Open Source"
+          },
+          {
+            "label": "Inquiries",
+            "val": "swastik.panda@kiit.ac.in"
+          }
+        ],
+        "diagram_type": "conclusion_badge",
+        "script": "In conclusion, our research provides definitive empirical evidence that post-quantum digital signatures are not merely theoretical constructs, but are immediately deployable on commercial-off-the-shelf microcontrollers. Dilithium2 not only outperforms legacy RSA-2048 across every metric—achieving an 80-fold speedup and 79-fold energy reduction—but does so while consuming a negligible fraction of daily battery life. Paired with our hybrid protocol, quantum-safe authentication can be seamlessly deployed across modern agricultural IoT today. Thank you for your time and attention; I welcome your questions and collaborative inquiries."
+      }
+    ]
+  },
+  "paper2": {
+    "id": "paper2",
+    "title": "QAT-Edge: Hessian-Driven Mixed-Precision Quantization-Aware Training of Conformer and PatchTST Networks for Real-Time Anomaly Detection on Constrained Edge Devices",
+    "short_title": "QAT-Edge Mixed-Precision Transformers",
+    "track": "Edge AI & Real-Time Anomaly Detection",
+    "authors": "Sankhadeep Debdas, Swastik Panda, Debasis Nayak, Rana Chattaraj, Simanchala Behera, Amit Kumar Sahoo",
+    "affiliations": "Amity University Chhattisgarh | KIIT Deemed to be University, Bhubaneswar | Centurion University of Technology and Management, India",
+    "contact": "swastik.panda@kiit.ac.in | debasis.nayak@kiit.ac.in",
+    "slides": [
+      {
+        "slide_num": 1,
+        "type": "title",
+        "title": "QAT-Edge: Hessian-Driven Mixed-Precision Quantization-Aware Training",
+        "subtitle": "Conformer & PatchTST Anomaly Detection on Battery-Powered Edge Hardware",
+        "bullets": [
+          "Sankhadeep Debdas, Swastik Panda, Debasis Nayak, Rana Chattaraj, Simanchala Behera, Amit Kumar Sahoo",
+          "Amity University Chhattisgarh | Kalinga Institute of Industrial Technology (KIIT) | Centurion University",
+          "Specialized in Resource-Constrained Deep Learning & Acoustic/Vibrational Triage",
+          "Author Contact: swastik.panda@kiit.ac.in | debasis.nayak@kiit.ac.in"
+        ],
+        "metrics": [
+          {
+            "label": "Framework",
+            "val": "QAT-Edge"
+          },
+          {
+            "label": "Target Edge",
+            "val": "Raspberry Pi 4 / Jetson Nano"
+          },
+          {
+            "label": "TDP Envelope",
+            "val": "< 4.0 Watts"
+          }
+        ],
+        "diagram_type": "title_lattice",
+        "script": "Distinguished guests, researchers, and colleagues. Welcome to our presentation on QAT-Edge: Hessian-Driven Mixed-Precision Quantization-Aware Training of Conformer and PatchTST Networks for Real-Time Anomaly Detection on Constrained Edge Devices. Edge hardware like the Raspberry Pi 4 and NVIDIA Jetson Nano presents strict power limits under four watts. While modern attention backbones provide state-of-the-art anomaly detection, deploying them on battery-powered edge hardware leads to severe thermal throttling or catastrophic accuracy collapse. Today, we demonstrate how second-order Hessian curvature analysis enables mixed INT4, INT8, and FP16 quantization, slashing latency and power while recovering critical fault sensitivity."
+      },
+      {
+        "slide_num": 2,
+        "type": "agenda",
+        "title": "Presentation Agenda & Roadmap",
+        "subtitle": "From Second-Order Loss Curvature to Millisecond Edge Inference",
+        "bullets": [
+          "The Edge AI Dilemma: Attention backbones vs 4W Thermal Design Power (TDP)",
+          "Motivation & Stakes: Industrial downtime, cellular streaming costs, and data privacy",
+          "Literature Gap: Failure of uniform Post-Training Quantization (PTQ) on attention heads",
+          "Core Objectives: Sub-100 ms edge latency, <3.5W power, and <1% F1 loss",
+          "Methodology: Hutchinson Hessian trace estimation & learnable precision thresholding",
+          "Experimental Proof: CWRU vibration and MIMII acoustic benchmarks",
+          "Hardware Benchmarks on Raspberry Pi 4 & Jetson Nano, Discussion, and Future Work"
+        ],
+        "metrics": [
+          {
+            "label": "Backbones",
+            "val": "PatchTST & Conformer"
+          },
+          {
+            "label": "Datasets",
+            "val": "CWRU & MIMII (0 dB)"
+          },
+          {
+            "label": "Hardware",
+            "val": "RPi 4 & Jetson Nano"
+          }
+        ],
+        "diagram_type": "agenda_flow",
+        "script": "Our presentation is structured into seven logical sections. We begin with the edge deployment bottleneck: why full-precision transformer models routinely breach the four-watt thermal envelope of single-board computers. We discuss the industrial motivation of eliminating costly 4G cellular streaming. Next, we expose the gap in existing post-training quantization techniques that cause catastrophic false negatives. We then introduce the mathematical framework of QAT-Edge, combining Hutchinson trace estimation with learnable bit-width thresholds. We present empirical validations across vibration and acoustic datasets, review hardware benchmarks on Raspberry Pi 4 and Jetson Nano, and conclude with deployment guidelines."
+      },
+      {
+        "slide_num": 3,
+        "type": "problem",
+        "title": "Research Problem & Context",
+        "subtitle": "The Edge Thermal Barrier & Quantization Collapse",
+        "bullets": [
+          "Thermal Wall: Full-precision FP32 PatchTST consumes 4.87W on Raspberry Pi 4, exceeding 4W TDP limit.",
+          "Latency Bottleneck: FP32 inference latency of 312.4 ms exceeds the real-time threshold for acoustic triage.",
+          "Memory Footprint: 312 MB runtime RAM usage overwhelms multi-tenant embedded edge microprocessors.",
+          "Naive Quantization Failure: Standard uniform INT8 Post-Training Quantization (PTQ) drops F1 by 7.4%.",
+          "Catastrophic Fault Misses: PTQ increases False Negative Rate to 14.8% on CWRU bearing fault detection."
+        ],
+        "metrics": [
+          {
+            "label": "FP32 Power",
+            "val": "4.87 W (Violates 4W TDP)"
+          },
+          {
+            "label": "FP32 Latency",
+            "val": "312.4 ms"
+          },
+          {
+            "label": "PTQ F1 Drop",
+            "val": "0.961 → 0.887 (-7.4%)"
+          }
+        ],
+        "diagram_type": "quantum_threat",
+        "script": "Let us examine the problem in detail. Modern industrial and agricultural machinery relies on time-series vibration sensors and acoustic microphones for predictive maintenance. Transformer-based models like Conformer and PatchTST achieve exceptional anomaly detection, but require massive compute. On a standard Raspberry Pi 4, FP32 PatchTST draws 4.87 watts of power—violating the device's four-watt thermal design power ceiling and causing thermal throttling within minutes. Furthermore, inference takes 312 milliseconds. When engineers apply standard INT8 post-training quantization to reduce size, accuracy collapses: the false-negative rate spikes to 14.8 percent on the CWRU dataset, causing critical mechanical failures to go completely undetected."
+      },
+      {
+        "slide_num": 4,
+        "type": "motivation",
+        "title": "Why It Matters / Motivation",
+        "subtitle": "Zero-Bandwidth In-Situ Triage vs Cloud Vulnerability",
+        "bullets": [
+          "Unscheduled Industrial Downtime: Undetected bearing failures cost automated facilities up to $260k/hour.",
+          "Eliminating Cloud Dependence: Offloading audio streams consumes 1.2 GB/hour per sensor over 4G cellular.",
+          "Cellular Latency Jitter: Cloud round-trip latency fluctuates between 180 and 340 ms with dead zones.",
+          "Data Privacy & IP Protection: Raw industrial acoustic telemetry reveals proprietary production signatures.",
+          "The Imperative: Achieve deterministic, sub-100 ms on-device inference without sacrificing fault detection."
+        ],
+        "metrics": [
+          {
+            "label": "Downtime Cost",
+            "val": "Up to $260k / hr"
+          },
+          {
+            "label": "Cloud Bandwidth",
+            "val": "1.2 GB / hr / sensor"
+          },
+          {
+            "label": "Cloud Latency",
+            "val": "180–340 ms"
+          }
+        ],
+        "diagram_type": "motivation_grid",
+        "script": "Why is solving this problem vital? In automated agricultural sorting and heavy manufacturing, unexpected mechanical bearing failures cost up to 260 thousand dollars per hour in downtime. Streaming raw multi-channel audio or vibration data to the cloud is economically and technically unfeasible: it consumes 1.2 gigabytes per hour per sensor over cellular modems, incurs round-trip delays between 180 and 340 milliseconds, and exposes proprietary operational acoustics to intercept risks. Industrial operators demand deterministic on-device inference under 100 milliseconds and under three watts, capable of running continuously on standalone solar-battery packs."
+      },
+      {
+        "slide_num": 5,
+        "type": "lit_review",
+        "title": "Literature Review & Prior Work (Gap Map)",
+        "subtitle": "Shortcomings of First-Order and Uniform Quantization",
+        "bullets": [
+          "Uniform INT8 PTQ (TensorRT/TFLite): Treats all layers identically; severely distorts multi-head self-attention.",
+          "Uniform QAT (PyTorch/QAT): Requires retraining but forces uniform bit-width, failing to capture layer sensitivities.",
+          "First-Order Quantizers: Magnitude-based pruning and first-order gradients ignore loss surface curvature.",
+          "HAWQ-V2 & BRECQ: Hessian-based techniques developed solely for CNN image models (ResNet/MobileNet).",
+          "Our Gap Contribution: First framework tailoring second-order Hessian sensitivity to temporal PatchTST and Conformer."
+        ],
+        "metrics": [
+          {
+            "label": "PTQ FNR",
+            "val": "14.8% (Unacceptable)"
+          },
+          {
+            "label": "HAWQ-V2 Gap",
+            "val": "CNNs only; no Attention"
+          },
+          {
+            "label": "Our Innovation",
+            "val": "Hessian Trace + Adaptive τ"
+          }
+        ],
+        "diagram_type": "gap_map",
+        "script": "Examining existing quantization literature highlights why prior approaches fail on modern temporal backbones. Uniform post-training quantization, supported by tools like TensorRT and TFLite, applies a static INT8 scale factor across all weights and activations. While effective for convolutional networks, it severely disrupts attention matrices. Uniform Quantization-Aware Training improves accuracy but restricts all layers to the same bit-width. Second-order methods like HAWQ-V2 and BRECQ demonstrated the value of Hessian eigenvalues, but were designed strictly for image classification CNNs. No prior work has formulated second-order quantization specifically for temporal patch projections and conformer self-attention."
+      },
+      {
+        "slide_num": 6,
+        "type": "objectives",
+        "title": "Research Objectives & Technical Aims",
+        "subtitle": "Quantization-Aware Training Optimized for Edge Envelopes",
+        "bullets": [
+          "Objective 1: Formulate Hessian Sensitivity Metric — Compute layer-wise Hutchinson trace Tr(H_l) and λ_max.",
+          "Objective 2: Adaptive Bit Allocation — Dynamically assign FP16, INT8, and INT4 bit-widths using learnable threshold τ.",
+          "Objective 3: Edge Validation — Benchmark on physical Raspberry Pi 4 and NVIDIA Jetson Nano hardware.",
+          "Constraint Ceiling: Maintain power consumption strictly under the 4.0 W thermal dissipation limit.",
+          "Accuracy Criterion: Limit Macro-F1 degradation to less than 1.0% relative to uncompressed FP32 baseline."
+        ],
+        "metrics": [
+          {
+            "label": "Max Power",
+            "val": "< 4.0 W"
+          },
+          {
+            "label": "Latency Target",
+            "val": "< 100 ms"
+          },
+          {
+            "label": "Max F1 Drop",
+            "val": "< 1.0%"
+          }
+        ],
+        "diagram_type": "objectives_tree",
+        "script": "To overcome these challenges, we defined three clear technical objectives. First, to formulate a mathematically grounded second-order sensitivity metric using stochastic Hutchinson trace estimation of the Hessian matrix and its top eigenvalue, quantifying the loss curvature of individual attention and feed-forward layers. Second, to develop a differentiable, learnable threshold mechanism with regularization that automatically assigns optimal mixed bit-widths—allocating FP16 to high-curvature layers, INT8 to moderate layers, and INT4 to flat layers. Third, to validate this framework directly on Raspberry Pi 4 and Jetson Nano hardware, targeting sub-100 millisecond latency and power consumption below 3.5 watts."
+      },
+      {
+        "slide_num": 7,
+        "type": "methodology",
+        "title": "QAT-Edge Methodology & Architectural Pipeline",
+        "subtitle": "Hessian-Driven Precision Allocation & Quantization Formulation",
+        "bullets": [
+          "Hutchinson Trace Estimation: Tr(H_l) ≈ 1/M ∑ v_i^T ∇_W_l (∇_W_l L · v_i) using Rademacher random vectors.",
+          "Curvature Sensitivity Metric: S_l = α · Tr(H_l) / ||W_l||_F + β · λ_max(H_l) to measure loss distortion.",
+          "Differentiable Bit Assignment: Sigmoid-parameterized threshold τ* ≈ 0.62 determines INT4, INT8, or FP16 bit-width.",
+          "Straight-Through Estimator (STE): Uniform affine quantizer Q(w, b) = clip(round(w/s) + z, -2^(b-1), 2^(b-1)-1).",
+          "Hardware Target: Export to ONNX runtime engine with custom INT8/INT4 GEMM kernel dispatch."
+        ],
+        "metrics": [
+          {
+            "label": "Hutchinson Vectors",
+            "val": "M = 50 Rademacher"
+          },
+          {
+            "label": "Learned Threshold",
+            "val": "τ* ≈ 0.62"
+          },
+          {
+            "label": "Backbones",
+            "val": "PatchTST & Conformer"
+          }
+        ],
+        "diagram_type": "methodology_arch",
+        "script": "The mathematical foundation of QAT-Edge is detailed on this slide. Computing the exact Hessian matrix for multi-million parameter networks is intractable. Instead, we utilize randomized Hutchinson trace estimation with 50 Rademacher vectors to approximate the trace of the Hessian without explicitly forming the matrix. We combine the normalized trace with the dominant eigenvalue to compute a layer-specific sensitivity metric, S_l. A learnable sigmoid threshold, regularized by a hardware latency penalty, guides precision allocation. During training, the straight-through estimator allows gradients to flow through discrete rounding operators. Layers with sharp curvature retain FP16 or INT8, while flat layers are compressed to INT4."
+      },
+      {
+        "slide_num": 8,
+        "type": "result_primary",
+        "title": "Key Result 1: Anomaly Detection Performance",
+        "subtitle": "Superior Accuracy & Rare Fault Recovery on CWRU and MIMII",
+        "bullets": [
+          "CWRU Bearing Dataset: QAT-Edge achieves 0.943 Macro-F1 (AUC 0.969) vs 0.887 for PTQ INT8 (+5.6 F1 points).",
+          "Dramatic FNR Reduction: False Negative Rate drops from 14.8% (PTQ) to just 4.2% under QAT-Edge.",
+          "MIMII Acoustic Benchmark: Under harsh 0 dB SNR noise, achieves 0.948 Macro-F1 and 0.963 AUC-ROC.",
+          "Outperforming Competitors: Surpasses HAWQ-V2 (0.931 CWRU) and BRECQ (0.934 CWRU) on attention backbones.",
+          "Minority Fault Recovery: 100% detection on severe outer-race faults (OR@3) and critical ball faults (Ball-021)."
+        ],
+        "metrics": [
+          {
+            "label": "CWRU Macro-F1",
+            "val": "0.943 (vs 0.887 PTQ)"
+          },
+          {
+            "label": "FNR Reduction",
+            "val": "14.8% → 4.2%"
+          },
+          {
+            "label": "MIMII AUC",
+            "val": "0.963 @ 0 dB SNR"
+          }
+        ],
+        "diagram_type": "benchmark_chart",
+        "script": "Here are our primary classification results from Table 1. On the CWRU vibration dataset, QAT-Edge achieves a Macro-F1 score of 0.943 and an AUC-ROC of 0.969. In comparison, standard INT8 post-training quantization scores only 0.887, representing a 5.6 point improvement. Crucially, the false-negative rate drops from 14.8 percent down to just 4.2 percent. On the MIMII industrial acoustic benchmark evaluated under severe zero-decibel signal-to-noise ratio conditions, QAT-Edge achieves 0.948 Macro-F1. It consistently outperforms state-of-the-art quantizers like HAWQ-V2 and BRECQ, successfully identifying subtle minority fault categories like inner-ball and outer-race cracks that other methods miss completely."
+      },
+      {
+        "slide_num": 9,
+        "type": "result_secondary",
+        "title": "Key Result 2: Edge Hardware Profiling & Ablations",
+        "subtitle": "Pareto-Optimal Execution within the 4W Thermal Ceiling",
+        "bullets": [
+          "Raspberry Pi 4 Execution: Latency reduced to 94.1 ms (3.3× faster than FP32's 312.4 ms).",
+          "Power Draw Compliance: Power consumption drops to 2.44 W — well below the 4.87 W FP32 baseline and 4W TDP.",
+          "Jetson Nano Acceleration: Latency reaches 23.8 ms (>42 FPS real-time audio) with a modest 3.34 W power draw.",
+          "RAM & Storage Compression: Model footprint drops 3.4× to 1.12 MB; runtime RAM reduced by 71% to 91.3 MB.",
+          "Ablation Proof: Hessian sensitivity recovers +1.3 F1 points, while adaptive τ + λ reg reduces power from 2.61W to 2.44W."
+        ],
+        "metrics": [
+          {
+            "label": "RPi 4 Speedup",
+            "val": "3.3× (94.1 ms)"
+          },
+          {
+            "label": "RPi 4 Power",
+            "val": "2.44 W (under 4W)"
+          },
+          {
+            "label": "Jetson Nano",
+            "val": "23.8 ms (>42 FPS)"
+          }
+        ],
+        "diagram_type": "hybrid_protocol",
+        "script": "Turning to our secondary hardware results shown in Table 2 and Table 3. On the Raspberry Pi 4, QAT-Edge achieves an inference latency of 94.1 milliseconds, delivering a 3.3-fold speedup over full precision. More importantly, operating power drops from 4.87 watts down to 2.44 watts, safely within the board's four-watt thermal envelope and preventing thermal shutdown. On the NVIDIA Jetson Nano, QAT-Edge achieves 23.8 millisecond latency, enabling real-time audio processing at over 42 frames per second under 3.34 watts. Our ablation study proves that second-order sensitivity alone recovers most of the quantization loss, while the adaptive threshold balances power and model size."
+      },
+      {
+        "slide_num": 10,
+        "type": "discussion",
+        "title": "Discussion & Technical Insights",
+        "subtitle": "Why Second-Order Curvature Protects Attention Mechanisms",
+        "bullets": [
+          "Curvature Asymmetry: Self-attention query-key dot products (Q·K^T) exhibit high Hessian trace (Tr(H) > 420).",
+          "Linear Robustness: Feed-forward expansion layers display flat eigenspectra (Tr(H) < 45), tolerating INT4.",
+          "Elimination of Gradient Vanishing: STE with adaptive clipping bounds quantization noise during backpropagation.",
+          "Edge vs Cloud Trade-off: Eliminates 1.2 GB/hr cellular bandwidth per sensor while matching cloud-level accuracy.",
+          "Operational Takeaway: Attention networks can safely run on sub-$50 edge silicon when guided by curvature."
+        ],
+        "metrics": [
+          {
+            "label": "Attention Curvature",
+            "val": "Tr(H) > 420 (FP16/INT8)"
+          },
+          {
+            "label": "FFN Curvature",
+            "val": "Tr(H) < 45 (INT4)"
+          },
+          {
+            "label": "Bandwidth Saved",
+            "val": "1.2 GB / hr / node"
+          }
+        ],
+        "diagram_type": "dsp_ntt",
+        "script": "This slide interprets why Hessian-guided mixed precision succeeds where uniform quantization fails. Our analysis revealed extreme curvature asymmetry across transformer layers. In both PatchTST and Conformer, the query and key projection matrices in the self-attention mechanism exhibit large eigenvalues and Hessian traces exceeding 420. Quantizing these layers to INT4 causes massive perturbation in the softmax distribution. In contrast, the feed-forward projection layers exhibit flat loss landscapes with traces below 45, absorbing INT4 compression without perceptible accuracy loss. By aligning bit-widths with true geometric curvature, QAT-Edge preserves critical attention dynamics while drastically reducing memory bandwidth."
+      },
+      {
+        "slide_num": 11,
+        "type": "limitations",
+        "title": "Limitations & Future Work",
+        "subtitle": "Current Boundaries & Emerging Hardware Architectures",
+        "bullets": [
+          "Training Overhead: Hutchinson trace estimation increases training time by approximately 18% over standard QAT.",
+          "Calibration Data Dependency: Requires a representative 500-sample calibration slice for reliable Hessian estimation.",
+          "Integer Kernel Support: Standard ARM NEON lacks native INT4 dot-product instructions, relying on packed INT8 emulators.",
+          "Thermal Cycling: Extreme ambient temperatures (>45°C) in outdoor agricultural enclosures require dynamic DVFS tuning.",
+          "Next Steps: Implementing QAT-Edge on next-generation NPU silicon (Hailo-8, Coral Edge TPU) with 2-bit quantization."
+        ],
+        "metrics": [
+          {
+            "label": "Training Overhead",
+            "val": "+18% GPU Compute"
+          },
+          {
+            "label": "Calibration Size",
+            "val": "500 Samples"
+          },
+          {
+            "label": "Target NPUs",
+            "val": "Hailo-8 & Coral TPU"
+          }
+        ],
+        "diagram_type": "limitations_roadmap",
+        "script": "We must also critically address our limitations and future research avenues. First, estimating the Hessian trace via Hutchinson's algorithm adds roughly 18 percent to total training time compared to standard QAT, though this remains an offline training cost. Second, reliable curvature estimation requires a representative calibration slice of approximately 500 samples. Third, because older ARM Cortex-A72 cores lack native INT4 arithmetic instructions, INT4 operations are packed and unpacked within INT8 registers, leaving some theoretical hardware speedup uncaptured. Moving forward, we are porting QAT-Edge to dedicated edge neural processing units such as Hailo-8 and Google Coral, targeting sub-bit and ternary weights."
+      },
+      {
+        "slide_num": 12,
+        "type": "conclusion",
+        "title": "Conclusion & Final Takeaways",
+        "subtitle": "Uncompromised Edge AI Anomaly Detection",
+        "bullets": [
+          "Framework Delivery: QAT-Edge delivers second-order mixed-precision quantization for attention networks.",
+          "Thermal Compliance: Restores PatchTST and Conformer power to 2.44 W, comfortably within the 4W TDP ceiling.",
+          "Superior Accuracy: Slashes false-negative rates from 14.8% to 4.2% while achieving 0.943 Macro-F1.",
+          "Deterministic Latency: Executes in 94.1 ms on Raspberry Pi 4 and 23.8 ms on Jetson Nano.",
+          "Open Research: Quantization code, pre-trained checkpoints, and ONNX deployment scripts released publicly."
+        ],
+        "metrics": [
+          {
+            "label": "Status",
+            "val": "Benchmarked & Validated"
+          },
+          {
+            "label": "Code Availability",
+            "val": "Open Source"
+          },
+          {
+            "label": "Inquiries",
+            "val": "swastik.panda@kiit.ac.in"
+          }
+        ],
+        "diagram_type": "conclusion_badge",
+        "script": "In conclusion, QAT-Edge bridges the gap between state-of-the-art transformer architectures and resource-constrained edge microprocessors. By using second-order Hessian loss curvature to allocate mixed INT4, INT8, and FP16 precisions, we achieve a 3.3-fold speedup and 71 percent RAM reduction on a Raspberry Pi 4, pulling operational power down to 2.44 watts without exceeding thermal limits. Most importantly, it reduces false-negative fault misses from 14.8 percent to 4.2 percent, ensuring mission-critical industrial reliability. Thank you very much for your time, and I am delighted to address any questions."
+      }
+    ]
+  },
+  "paper3": {
+    "id": "paper3",
+    "title": "Quantum-Inspired QAOA for Real-Time Multi-UAV Path Planning on Classical Edge Hardware: A Variational QUBO Framework under Dynamic Obstacles, Wind Disturbances, and Communication Delays",
+    "short_title": "Quantum-Inspired QAOA for Multi-UAVs",
+    "track": "Autonomous Robotics & Quantum-Inspired Optimization",
+    "authors": "Subhra Debdas, Lopamudra Mitra, Aurosri Arman Panigrahi, Bedadyuti Sahoo, Swastik Panda, Sucharita Pradhan",
+    "affiliations": "KIIT Deemed to be University, Bhubaneswar | Silicon University, Bhubaneswar, Odisha, India",
+    "contact": "subhra.debdasfee@kiit.ac.in | swastik.panda@kiit.ac.in",
+    "slides": [
+      {
+        "slide_num": 1,
+        "type": "title",
+        "title": "Quantum-Inspired QAOA for Real-Time Multi-UAV Path Planning",
+        "subtitle": "A Variational QUBO Framework under Dynamic Obstacles, Wind, & Latency",
+        "bullets": [
+          "Subhra Debdas, Lopamudra Mitra, Aurosri Arman Panigrahi, Bedadyuti Sahoo, Swastik Panda, Sucharita Pradhan",
+          "School of Electrical Engineering | School of Computer Science & Engineering | Silicon University",
+          "Kalinga Institute of Industrial Technology (KIIT) Deemed to be University, Bhubaneswar, India",
+          "Official Contact: subhra.debdasfee@kiit.ac.in | swastik.panda@kiit.ac.in"
+        ],
+        "metrics": [
+          {
+            "label": "Framework",
+            "val": "QI-QAOA"
+          },
+          {
+            "label": "Target Silicon",
+            "val": "Embedded NVIDIA Jetson Nano"
+          },
+          {
+            "label": "Fleet Scale",
+            "val": "2 to 8 Drones (16 Extended)"
+          }
+        ],
+        "diagram_type": "title_lattice",
+        "script": "Respected session chairs, scientific peers, and attendees. I am honored to present our research titled: Quantum-Inspired QAOA for Real-Time Multi-UAV Path Planning on Classical Edge Hardware: A Variational QUBO Framework under Dynamic Obstacles, Wind Disturbances, and Communication Delays. Coordinating autonomous aerial fleets across large-scale agricultural terrain requires solving combinatorial optimization problems that scale exponentially with fleet size. While true quantum hardware remains physically inaccessible in the field, we introduce a classical quantum-inspired algorithm that brings the structural advantages of QAOA to embedded edge companion computers, achieving sub-100 millisecond trajectory convergence."
+      },
+      {
+        "slide_num": 2,
+        "type": "agenda",
+        "title": "Presentation Agenda & Roadmap",
+        "subtitle": "Variational Optimization from Quantum Principles to Field Robotics",
+        "bullets": [
+          "Research Problem: Combinatorial NP-hard complexity of multi-UAV routing",
+          "Motivation & Urgency: Precision agriculture, pesticide spraying, and crop triage",
+          "Literature Gap: Why classical A*, RRT*, and NISQ quantum processors fall short",
+          "Technical Objectives: Real-time sub-100 ms planning with 8m safety clearance",
+          "Methodology: Multi-objective QUBO formulation & depth-p variational ansatz",
+          "Key Result 1: Latency, path length, and energy benchmarks vs classical baselines",
+          "Key Result 2: Collision safety, wind disturbance resistance, and field deployment"
+        ],
+        "metrics": [
+          {
+            "label": "Ansatz Depth",
+            "val": "p = 3 Layers"
+          },
+          {
+            "label": "Safety Buffer",
+            "val": "ds ≥ 8.0 Meters"
+          },
+          {
+            "label": "Wind Range",
+            "val": "0 to 8 m/s Gusts"
+          }
+        ],
+        "diagram_type": "agenda_flow",
+        "script": "Here is the structure of today's talk. We begin by examining the combinatorial complexity that causes conventional multi-agent planners to stall when scaling beyond two or three drones. We establish the agricultural stakes of automated fleet coverage and explain why neither classical graph search nor noisy intermediate-scale quantum devices provide a viable field solution. We then detail our variational QUBO formulation and parameter optimization pipeline. Next, we analyze our extensive benchmark results comparing latency, trajectory efficiency, and battery consumption against A-star, RRT-star, Particle Swarm, and Deep Reinforcement Learning. Finally, we review collision-free robustness under wind gusts and summarize our field roadmap."
+      },
+      {
+        "slide_num": 3,
+        "type": "problem",
+        "title": "Research Problem & Context",
+        "subtitle": "Exponential Combinatorial Explosion in Aerial Coordination",
+        "bullets": [
+          "NP-Hard Combinatorial Space: Scheduling N waypoints across K drones scales as O((N!)^K).",
+          "Classical Solver Paralysis: Mixed-Integer Linear Programming (MILP) and A* stall beyond 4 drones.",
+          "Dynamic Obstacles & Moving Hazards: Spraying drones must evade birds, irrigation rigs, and other drones.",
+          "Environmental Stochasticity: 0 to 8 m/s wind shear alters aerodynamic drift and battery discharge.",
+          "Communication Latency Jitter: Ad-hoc wireless links introduce 20 to 250 ms packet delay variations."
+        ],
+        "metrics": [
+          {
+            "label": "Complexity",
+            "val": "O((N!)^K) NP-Hard"
+          },
+          {
+            "label": "Comm Delay",
+            "val": "20–250 ms Jitter"
+          },
+          {
+            "label": "Field Area",
+            "val": "100 × 100 m Grid"
+          }
+        ],
+        "diagram_type": "quantum_threat",
+        "script": "Let us examine the mathematical complexity of multi-UAV path planning. Coordinating a fleet of K autonomous drones across N waypoints within a three-dimensional flight corridor is a recognized NP-hard combinatorial problem scaling as O of N-factorial to the power of K. In precision agriculture, this problem is further complicated by harsh dynamic realities: non-stationary obstacles such as birds and harvesting machinery, stochastic wind gusts up to eight meters per second, and communication latency jitter between 20 and 250 milliseconds. Classical exact solvers like MILP take tens of seconds to find solutions, making them incapable of real-time trajectory re-planning when unexpected obstacles appear."
+      },
+      {
+        "slide_num": 4,
+        "type": "motivation",
+        "title": "Why It Matters / Motivation",
+        "subtitle": "Autonomous Precision Agriculture & Operational Safety",
+        "bullets": [
+          "Food Security & Crop Yield: Multi-UAV swarms increase pesticide spraying efficiency by 500% over tractors.",
+          "Battery Endurance Limits: Rotary-wing UAVs have only 20–30 minutes flight time; wasted path length is fatal.",
+          "Severe Collision Hazards: Mid-air drone collisions cause equipment loss and hazardous chemical spills.",
+          "Compliance with Drone Rules: Must guarantee strict 8m separation under Indian DGCA Drone Rules 2021.",
+          "The Operational Need: Deterministic, on-board real-time planning executing on low-cost edge companion computers."
+        ],
+        "metrics": [
+          {
+            "label": "Flight Endurance",
+            "val": "20–30 Minutes"
+          },
+          {
+            "label": "Safety Zone",
+            "val": "India Rules (400 ft)"
+          },
+          {
+            "label": "Spraying Efficiency",
+            "val": "5× Over Ground"
+          }
+        ],
+        "diagram_type": "motivation_grid",
+        "script": "The motivation for solving this problem on low-power hardware is compelling. Multi-UAV swarms are revolutionizing agriculture by conducting synchronized thermal crop inspection and ultra-low-volume chemical spraying five times faster than ground vehicles. However, rotary-wing quadcopters suffer from severe battery limitations, typically possessing only 20 to 30 minutes of endurance. Every meter of redundant path length and every second spent hovering while waiting for a path calculation drains valuable flight reserves. Furthermore, safety regulations like India's Drone Rules 2021 mandate certified separation buffers. Operators urgently require an edge planner that computes collision-free trajectories on-board in milliseconds."
+      },
+      {
+        "slide_num": 5,
+        "type": "lit_review",
+        "title": "Literature Review & Prior Work (Gap Map)",
+        "subtitle": "Shortcomings of Classical Graph, Sampling, & Quantum Solvers",
+        "bullets": [
+          "Deterministic Graph Planners (A*, Dijkstra): Scale quadratically; sequential reservation tables cause deadlocks.",
+          "Sampling Heuristics (RRT*, PRM): Highly stochastic; yield jagged, sub-optimal paths requiring heavy smoothing.",
+          "Swarm Heuristics (PSO, Genetic): Prone to premature convergence in local minima; execution exceeds 140 ms.",
+          "Deep Reinforcement Learning (DRL): Fast inference (64 ms), but poor generalization to unseen wind disturbances.",
+          "Physical NISQ Quantum Hardware: Inaccessible in agricultural fields; high decoherence and error rates.",
+          "Our Contribution: Classical quantum-inspired QAOA simulation executed locally on embedded edge ARM/GPU cores."
+        ],
+        "metrics": [
+          {
+            "label": "A* Scalability",
+            "val": "Stalls at N > 15"
+          },
+          {
+            "label": "PSO Latency",
+            "val": "141.8 ms (Slow)"
+          },
+          {
+            "label": "NISQ Hardware",
+            "val": "Impractical in Field"
+          }
+        ],
+        "diagram_type": "gap_map",
+        "script": "Reviewing existing literature reveals why conventional algorithms struggle. Deterministic graph planners like A-star employ sequential reservation tables that easily deadlock when drone density increases. Probabilistic sampling methods like RRT-star generate jagged paths with 25 percent higher energy consumption. Swarm heuristics like Particle Swarm Optimization suffer from slow convergence, averaging over 140 milliseconds. Multi-Agent Reinforcement Learning offers fast inference but struggles to generalize when wind gusts exceed training distributions. Finally, while quantum algorithms promise theoretical speedups, real quantum processors cannot be mounted on an agricultural drone. Our work adapts QAOA principles directly to classical edge silicon."
+      },
+      {
+        "slide_num": 6,
+        "type": "objectives",
+        "title": "Research Objectives & Technical Aims",
+        "subtitle": "Quantum-Inspired Optimization for Real-Time Flight Planning",
+        "bullets": [
+          "Objective 1: Formulate Unified QUBO Matrix — Integrate path length, safety buffers, wind drift, and battery limits.",
+          "Objective 2: Classical Variational Ansatz — Implement depth p = 3 alternating QAOA Hamiltonians with COBYLA.",
+          "Objective 3: Edge Benchmarking — Profile execution latency, energy, and path optimality on NVIDIA Jetson Nano.",
+          "Latency Target: Achieve sub-100 ms planning latency for fleets up to 8 UAVs.",
+          "Safety Criterion: Sustain ≥94% collision-free operating rate across 500 Monte Carlo dynamic runs."
+        ],
+        "metrics": [
+          {
+            "label": "Target Latency",
+            "val": "< 100 ms (Up to 8 UAVs)"
+          },
+          {
+            "label": "Collision-Free",
+            "val": "≥ 94.0%"
+          },
+          {
+            "label": "Ansatz Layers",
+            "val": "p = 3 Depth"
+          }
+        ],
+        "diagram_type": "objectives_tree",
+        "script": "Our research set out to achieve three technical milestones. First, to construct an augmented Quadratic Unconstrained Binary Optimization matrix that concurrently encapsulates trajectory length, quadratic inter-UAV collision penalties, crop coverage rewards, wind drift resistance, battery limits, and communication delays. Second, to design a depth-three parameterized quantum-inspired ansatz simulated using classical statevector operations, optimized via derivative-free COBYLA tuning. Third, to benchmark the entire framework on an embedded NVIDIA Jetson Nano, demonstrating sub-100 millisecond execution latency and achieving a collision-free rate exceeding 94 percent across 500 stochastic trials."
+      },
+      {
+        "slide_num": 7,
+        "type": "methodology",
+        "title": "QI-QAOA Methodology & QUBO Formulation",
+        "subtitle": "Augmented Cost Hamiltonian & Classical Variational Circuit",
+        "bullets": [
+          "QUBO Objective: min H(x) = x^T Q x, where x_i,j,t ∈ {0, 1} indicates UAV k at waypoint i at timestep t.",
+          "Penalty Formulations: H_total = w1 H_length + w2 H_collision + w3 H_wind + w4 H_comm + w5 H_coverage.",
+          "Safety Penalty: H_collision = λ_c ∑ [max(0, d_s - ||r_k(t) - r_m(t)||)]^2 enforces d_s ≥ 8.0 m buffer.",
+          "Wind & Comm Embedding: Aerodynamic drag drift embedded as directional cost bias; packet jitter adds delay weights.",
+          "Variational Circuit: |γ, β⟩ = ∏ e^(-i β_l H_mix) e^(-i γ_l H_cost) |+⟩^⊗N; classical COBYLA evaluates ⟨H⟩."
+        ],
+        "metrics": [
+          {
+            "label": "Variables",
+            "val": "x ∈ {0, 1}^(K×N×T)"
+          },
+          {
+            "label": "Optimizer",
+            "val": "COBYLA (evals ≤ 200)"
+          },
+          {
+            "label": "Ansatz Depth",
+            "val": "p = 3 alternating"
+          }
+        ],
+        "diagram_type": "methodology_arch",
+        "script": "The mathematical formulation of QI-QAOA is illustrated here. We cast multi-UAV path planning into a QUBO minimization problem where binary decision variables represent whether a drone visits a specific waypoint at a given timestep. The objective Hamiltonian combines five weighted components: Euclidean path length, quadratic inter-drone collision penalties, wind drift vector penalties, communication delay weights, and crop coverage incentives. The quantum-inspired statevector is initialized in a uniform superposition and evolved through p = 3 alternating layers of cost and transverse mixer Hamiltonians. The expectation value is computed and fed into classical COBYLA, which converges to the optimal parameter set in under 200 evaluations."
+      },
+      {
+        "slide_num": 8,
+        "type": "result_primary",
+        "title": "Key Result 1: Latency & Path Efficiency Benchmarks",
+        "subtitle": "QI-QAOA Outperforms Classical Deterministic & Swarm Planners",
+        "bullets": [
+          "Fleet-Averaged Latency: QI-QAOA completes in 57.5 ms — 59.4% faster than PSO (141.8 ms) and 42% faster than A* (99.3 ms).",
+          "Path Length Optimization: Cumulative path length of 415.0 m is 10.5% shorter than A* (463.8 m) and 17.4% shorter than RRT*.",
+          "Energy Savings: Total propulsion energy of 347.5 J represents a 24.7% reduction over RRT* (461.3 J) and 17.7% over A*.",
+          "Waypoint Scalability (4 UAVs): 5 waypoints = 18 ms; 10 waypoints = 42 ms; 15 waypoints = 75 ms; 20 waypoints = 120 ms.",
+          "Real-Time Edge Preservation: Stays well below the 100 ms threshold required for real-time obstacle reactivity."
+        ],
+        "metrics": [
+          {
+            "label": "Planning Latency",
+            "val": "57.5 ms (59.4% < PSO)"
+          },
+          {
+            "label": "Path Length",
+            "val": "415.0 m (-10.5% vs A*)"
+          },
+          {
+            "label": "Energy Drop",
+            "val": "-24.7% vs RRT*"
+          }
+        ],
+        "diagram_type": "benchmark_chart",
+        "script": "Let us examine our primary experimental findings shown in Table 3 and Table 4. Evaluated across extensive multi-drone missions on an embedded Jetson Nano, QI-QAOA delivers a fleet-averaged planning latency of just 57.5 milliseconds. This is 59.4 percent faster than Particle Swarm Optimization, 52 percent faster than RRT-star, and even outpaces Multi-Agent Deep Reinforcement Learning. Furthermore, QI-QAOA yields the shortest flight corridors, producing an aggregate path length of 415.0 meters—10.5 percent shorter than A-star. This translates directly to a 24.7 percent propulsion energy reduction compared to RRT-star, extending effective mission flight time by several vital minutes."
+      },
+      {
+        "slide_num": 9,
+        "type": "result_secondary",
+        "title": "Key Result 2: Collision Safety & Robustness",
+        "subtitle": "94.8% Collision-Free Rate under Dynamic Hazards & Wind",
+        "bullets": [
+          "Safety Superiority: Fleet-averaged collision-free rate of 94.8% across 500 Monte Carlo simulation runs.",
+          "Graceful Fleet Scaling: Success rate remains 98% for 2 UAVs, 95% for 4 UAVs, and 91% for 8 UAVs.",
+          "Failure of Baselines: PSO degrades precipitously to 72% at 8 drones; RRT* drops to 75%; Simulated Annealing to 86.5%.",
+          "Wind Shear Tolerance: Sustains safe separation under turbulent wind gusts up to 8 m/s with zero deadlock.",
+          "Dynamic Obstacle Deconfliction: Receding-horizon replanning safely evades sudden pop-up obstacles in <60 ms."
+        ],
+        "metrics": [
+          {
+            "label": "Safety Rate",
+            "val": "94.8% Fleet Average"
+          },
+          {
+            "label": "8-Drone Safety",
+            "val": "91.0% (vs 72% PSO)"
+          },
+          {
+            "label": "Wind Limit",
+            "val": "8 m/s Stochastic Gusts"
+          }
+        ],
+        "diagram_type": "hybrid_protocol",
+        "script": "Our secondary finding evaluates operational safety and environmental robustness under dynamic obstacles and wind gusts. Over 500 independent Monte Carlo runs, QI-QAOA achieved a fleet-averaged collision-free operating rate of 94.8 percent. As fleet size increases from two to eight drones, QI-QAOA degrades gracefully from 98 percent down to 91 percent. In stark contrast, Particle Swarm Optimization drops to 72 percent, and RRT-star collapses to 75 percent due to spatial congestion. The quadratic penalty formulation in our QUBO matrix prevents path intersections by creating strong repulsive energy barriers between drones, even in the presence of 8 meter per second wind shear."
+      },
+      {
+        "slide_num": 10,
+        "type": "discussion",
+        "title": "Discussion & Technical Insights",
+        "subtitle": "Why Quantum-Inspired Superposition Outperforms Graph Search",
+        "bullets": [
+          "Parallel Landscape Exploration: The variational ansatz explores global combinatorial configurations concurrently.",
+          "Evasion of Local Traps: Transverse mixer Hamiltonian e^(-i β H_mix) enables tunneling across high-energy barrier ridges.",
+          "Coupled Multi-Agent QUBO: Jointly optimizes all K drones simultaneously, avoiding sequential priority deadlocks.",
+          "Derivative-Free Efficiency: COBYLA navigates non-smooth constraint boundaries without expensive Hessian computations.",
+          "Edge Compatibility: Tensor operations execute efficiently on embedded ARM NEON and NVIDIA CUDA cores."
+        ],
+        "metrics": [
+          {
+            "label": "Global Search",
+            "val": "Simultaneous K Drones"
+          },
+          {
+            "label": "Barrier Tunneling",
+            "val": "Mixer Hamiltonian"
+          },
+          {
+            "label": "Hardware Support",
+            "val": "CUDA & ARM NEON"
+          }
+        ],
+        "diagram_type": "dsp_ntt",
+        "script": "Why does a quantum-inspired formulation dramatically outperform classical graph search? Classical planners like A-star and RRT plan sequentially: drone one plans first, drone two avoids drone one, and by the time drone eight plans, the remaining airspace is choked with reservation obstacles, causing deadlocks. In contrast, QI-QAOA constructs a coupled QUBO matrix that optimizes the trajectories of all eight drones simultaneously. The transverse mixer Hamiltonian enables the parameter space to tunnel through steep energy barriers that trap conventional gradient descent and PSO heuristics. When executed on embedded GPU cores using tensor contractions, it delivers near-optimal paths in deterministic time."
+      },
+      {
+        "slide_num": 11,
+        "type": "limitations",
+        "title": "Limitations & Future Roadmap",
+        "subtitle": "Scaling Frontiers & Real-World Airframe Integration",
+        "bullets": [
+          "Ansatz Depth vs Latency: Increasing depth beyond p = 3 yields marginal optimality gains but doubles solve time.",
+          "Large Fleet Scaling (K > 16): Statevector memory footprint scales with problem size; requires hierarchical clustering.",
+          "Aerodynamic Downwash Effects: Rotor downwash interaction between proximal UAVs requires CFD-based penalty tuning.",
+          "Physical Autopilot Integration: Ongoing flight testing with ROS 2 Humble and PX4/MAVLink autopilot firmware.",
+          "Hardware Co-Processor Horizon: Evaluating hybrid edge implementations on quantum annealing simulators and ASICs."
+        ],
+        "metrics": [
+          {
+            "label": "Ansatz Limit",
+            "val": "p = 3 Optimal"
+          },
+          {
+            "label": "Autopilot",
+            "val": "ROS 2 / Pixhawk 6C"
+          },
+          {
+            "label": "Next Step",
+            "val": "Physical Field Trials"
+          }
+        ],
+        "diagram_type": "limitations_roadmap",
+        "script": "Let us candidly address current constraints and future development. First, increasing the ansatz depth beyond p = 3 provides only marginal path improvements while doubling computational time, confirming that depth three is the empirical sweet spot for edge hardware. Second, when scaling beyond 16 drones, the full QUBO matrix requires hierarchical spatial partitioning to avoid GPU memory saturation. Third, our model approximates drones as spherical safety zones; incorporating real aerodynamic rotor downwash interactions via computational fluid dynamics is an active priority. We are currently conducting field tests using Pixhawk 6C autopilots running ROS 2 Humble under India's Drone Rules."
+      },
+      {
+        "slide_num": 12,
+        "type": "conclusion",
+        "title": "Conclusion & Final Takeaways",
+        "subtitle": "Quantum-Inspired Robotics is Ready for Autonomous Flight",
+        "bullets": [
+          "Empirical Validation: Proved QI-QAOA delivers real-time multi-UAV path planning on embedded edge silicon.",
+          "Decisive Superiority: 59.4% faster than PSO, 10.5% shorter paths than A*, and 24.7% lower energy than RRT*.",
+          "Field Safety: Sustained 94.8% collision-free rate under dynamic hazards and 8 m/s stochastic wind gusts.",
+          "Ultra-Low Latency: 57.5 ms average execution enables reactive receding-horizon trajectory re-planning.",
+          "Open Science: Complete QUBO generation scripts, simulation environments, and ROS 2 bridges open-sourced."
+        ],
+        "metrics": [
+          {
+            "label": "Status",
+            "val": "Simulation Verified"
+          },
+          {
+            "label": "Code Availability",
+            "val": "Open Source"
+          },
+          {
+            "label": "Inquiries",
+            "val": "subhra.debdasfee@kiit.ac.in"
+          }
+        ],
+        "diagram_type": "conclusion_badge",
+        "script": "To conclude, our paper establishes that quantum-inspired optimization is a powerful, production-viable paradigm for autonomous edge robotics. By formulating multi-UAV path planning as a variational QUBO problem, QI-QAOA achieves 57.5 millisecond execution latency on an embedded Jetson Nano, outperforming classical heuristic and sampling planners across path length, energy efficiency, and collision resilience. It resolves the bottleneck of multi-drone agricultural coordination without waiting for physical quantum hardware. Thank you very much for your time and attention; I look forward to your questions and future collaborations."
+      }
+    ]
+  }
+};
+window.AUDIO_DURATIONS = {
+  "paper1": {
+    "slide_01": {
+      "duration": 49.944,
+      "file": "audio/paper1/slide_01.mp3"
+    },
+    "slide_02": {
+      "duration": 48.168,
+      "file": "audio/paper1/slide_02.mp3"
+    },
+    "slide_03": {
+      "duration": 54.384,
+      "file": "audio/paper1/slide_03.mp3"
+    },
+    "slide_04": {
+      "duration": 49.104,
+      "file": "audio/paper1/slide_04.mp3"
+    },
+    "slide_05": {
+      "duration": 50.136,
+      "file": "audio/paper1/slide_05.mp3"
+    },
+    "slide_06": {
+      "duration": 53.688,
+      "file": "audio/paper1/slide_06.mp3"
+    },
+    "slide_07": {
+      "duration": 51.168,
+      "file": "audio/paper1/slide_07.mp3"
+    },
+    "slide_08": {
+      "duration": 56.952,
+      "file": "audio/paper1/slide_08.mp3"
+    },
+    "slide_09": {
+      "duration": 60.096,
+      "file": "audio/paper1/slide_09.mp3"
+    },
+    "slide_10": {
+      "duration": 57.84,
+      "file": "audio/paper1/slide_10.mp3"
+    },
+    "slide_11": {
+      "duration": 49.2,
+      "file": "audio/paper1/slide_11.mp3"
+    },
+    "slide_12": {
+      "duration": 40.824,
+      "file": "audio/paper1/slide_12.mp3"
+    },
+    "total_duration": 621.504
+  },
+  "paper2": {
+    "slide_01": {
+      "duration": 48.744,
+      "file": "audio/paper2/slide_01.mp3"
+    },
+    "slide_02": {
+      "duration": 47.112,
+      "file": "audio/paper2/slide_02.mp3"
+    },
+    "slide_03": {
+      "duration": 53.688,
+      "file": "audio/paper2/slide_03.mp3"
+    },
+    "slide_04": {
+      "duration": 44.688,
+      "file": "audio/paper2/slide_04.mp3"
+    },
+    "slide_05": {
+      "duration": 49.248,
+      "file": "audio/paper2/slide_05.mp3"
+    },
+    "slide_06": {
+      "duration": 48.096,
+      "file": "audio/paper2/slide_06.mp3"
+    },
+    "slide_07": {
+      "duration": 50.328,
+      "file": "audio/paper2/slide_07.mp3"
+    },
+    "slide_08": {
+      "duration": 58.776,
+      "file": "audio/paper2/slide_08.mp3"
+    },
+    "slide_09": {
+      "duration": 50.136,
+      "file": "audio/paper2/slide_09.mp3"
+    },
+    "slide_10": {
+      "duration": 50.688,
+      "file": "audio/paper2/slide_10.mp3"
+    },
+    "slide_11": {
+      "duration": 50.76,
+      "file": "audio/paper2/slide_11.mp3"
+    },
+    "slide_12": {
+      "duration": 43.68,
+      "file": "audio/paper2/slide_12.mp3"
+    },
+    "total_duration": 595.944
+  },
+  "paper3": {
+    "slide_01": {
+      "duration": 47.472,
+      "file": "audio/paper3/slide_01.mp3"
+    },
+    "slide_02": {
+      "duration": 49.32,
+      "file": "audio/paper3/slide_02.mp3"
+    },
+    "slide_03": {
+      "duration": 45.768,
+      "file": "audio/paper3/slide_03.mp3"
+    },
+    "slide_04": {
+      "duration": 47.736,
+      "file": "audio/paper3/slide_04.mp3"
+    },
+    "slide_05": {
+      "duration": 51.144,
+      "file": "audio/paper3/slide_05.mp3"
+    },
+    "slide_06": {
+      "duration": 47.208,
+      "file": "audio/paper3/slide_06.mp3"
+    },
+    "slide_07": {
+      "duration": 49.32,
+      "file": "audio/paper3/slide_07.mp3"
+    },
+    "slide_08": {
+      "duration": 52.032,
+      "file": "audio/paper3/slide_08.mp3"
+    },
+    "slide_09": {
+      "duration": 49.296,
+      "file": "audio/paper3/slide_09.mp3"
+    },
+    "slide_10": {
+      "duration": 47.568,
+      "file": "audio/paper3/slide_10.mp3"
+    },
+    "slide_11": {
+      "duration": 47.568,
+      "file": "audio/paper3/slide_11.mp3"
+    },
+    "slide_12": {
+      "duration": 41.448,
+      "file": "audio/paper3/slide_12.mp3"
+    },
+    "total_duration": 575.88
+  }
+};

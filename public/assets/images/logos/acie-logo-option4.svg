@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 130" width="100%" height="100%">
+  <defs>
+    <linearGradient id="l4-grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E40AF" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <linearGradient id="l4-grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#1E293B" />
+    </linearGradient>
+    <linearGradient id="l4-teal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <filter id="l4-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#1E40AF" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <!-- Icon Mark -->
+  <g transform="translate(18, 14)" filter="url(#l4-shadow)">
+    <!-- Architectural Tensor Plate Left -->
+    <path d="M 48,10 L 14,88 L 32,88 L 48,46 Z" fill="url(#l4-grad1)" />
+    <!-- Architectural Tensor Plate Right -->
+    <path d="M 54,10 L 88,88 L 70,88 L 54,46 Z" fill="url(#l4-grad2)" />
+    <!-- Dynamic Cross-Bar / Data Beam -->
+    <polygon points="26,60 76,60 72,52 22,52" fill="url(#l4-teal)" />
+    <!-- Floating Intelligent Nucleus -->
+    <circle cx="51" cy="24" r="5" fill="#38BDF8" stroke="#FFFFFF" stroke-width="1.5" />
+    <circle cx="51" cy="72" r="3.5" fill="#10B981" />
+  </g>
+  <!-- Text Brand -->
+  <g transform="translate(128, 24)">
+    <text x="0" y="42" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-weight="900" font-size="44" fill="#0F172A" letter-spacing="-1">
+      ACIE<tspan fill="#10B981">.</tspan><tspan fill="#2563EB" font-size="34">2027</tspan>
+    </text>
+    <rect x="0" y="52" width="280" height="2" fill="#E2E8F0" />
+    <rect x="0" y="52" width="55" height="2" fill="#10B981" />
+    <text x="0" y="70" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-weight="700" font-size="12" fill="#1E293B" letter-spacing="1.5">
+      ADVANCES IN COMPUTING &amp; INTELLIGENCE
+    </text>
+    <text x="0" y="87" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-weight="500" font-size="10.5" fill="#64748B" letter-spacing="0.5">
+      International Conference &amp; Journal • KIIT Bhubaneswar
+    </text>
+  </g>
+</svg>

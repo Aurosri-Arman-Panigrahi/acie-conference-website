@@ -1,0 +1,155 @@
+{
+  "paper1": {
+    "slide_01": {
+      "duration": 49.944,
+      "file": "audio/paper1/slide_01.mp3"
+    },
+    "slide_02": {
+      "duration": 48.168,
+      "file": "audio/paper1/slide_02.mp3"
+    },
+    "slide_03": {
+      "duration": 54.384,
+      "file": "audio/paper1/slide_03.mp3"
+    },
+    "slide_04": {
+      "duration": 49.104,
+      "file": "audio/paper1/slide_04.mp3"
+    },
+    "slide_05": {
+      "duration": 50.136,
+      "file": "audio/paper1/slide_05.mp3"
+    },
+    "slide_06": {
+      "duration": 53.688,
+      "file": "audio/paper1/slide_06.mp3"
+    },
+    "slide_07": {
+      "duration": 51.168,
+      "file": "audio/paper1/slide_07.mp3"
+    },
+    "slide_08": {
+      "duration": 56.952,
+      "file": "audio/paper1/slide_08.mp3"
+    },
+    "slide_09": {
+      "duration": 60.096,
+      "file": "audio/paper1/slide_09.mp3"
+    },
+    "slide_10": {
+      "duration": 57.84,
+      "file": "audio/paper1/slide_10.mp3"
+    },
+    "slide_11": {
+      "duration": 49.2,
+      "file": "audio/paper1/slide_11.mp3"
+    },
+    "slide_12": {
+      "duration": 40.824,
+      "file": "audio/paper1/slide_12.mp3"
+    },
+    "total_duration": 621.504
+  },
+  "paper2": {
+    "slide_01": {
+      "duration": 48.744,
+      "file": "audio/paper2/slide_01.mp3"
+    },
+    "slide_02": {
+      "duration": 47.112,
+      "file": "audio/paper2/slide_02.mp3"
+    },
+    "slide_03": {
+      "duration": 53.688,
+      "file": "audio/paper2/slide_03.mp3"
+    },
+    "slide_04": {
+      "duration": 44.688,
+      "file": "audio/paper2/slide_04.mp3"
+    },
+    "slide_05": {
+      "duration": 49.248,
+      "file": "audio/paper2/slide_05.mp3"
+    },
+    "slide_06": {
+      "duration": 48.096,
+      "file": "audio/paper2/slide_06.mp3"
+    },
+    "slide_07": {
+      "duration": 50.328,
+      "file": "audio/paper2/slide_07.mp3"
+    },
+    "slide_08": {
+      "duration": 58.776,
+      "file": "audio/paper2/slide_08.mp3"
+    },
+    "slide_09": {
+      "duration": 50.136,
+      "file": "audio/paper2/slide_09.mp3"
+    },
+    "slide_10": {
+      "duration": 50.688,
+      "file": "audio/paper2/slide_10.mp3"
+    },
+    "slide_11": {
+      "duration": 50.76,
+      "file": "audio/paper2/slide_11.mp3"
+    },
+    "slide_12": {
+      "duration": 43.68,
+      "file": "audio/paper2/slide_12.mp3"
+    },
+    "total_duration": 595.944
+  },
+  "paper3": {
+    "slide_01": {
+      "duration": 47.472,
+      "file": "audio/paper3/slide_01.mp3"
+    },
+    "slide_02": {
+      "duration": 49.32,
+      "file": "audio/paper3/slide_02.mp3"
+    },
+    "slide_03": {
+      "duration": 45.768,
+      "file": "audio/paper3/slide_03.mp3"
+    },
+    "slide_04": {
+      "duration": 47.736,
+      "file": "audio/paper3/slide_04.mp3"
+    },
+    "slide_05": {
+      "duration": 51.144,
+      "file": "audio/paper3/slide_05.mp3"
+    },
+    "slide_06": {
+      "duration": 47.208,
+      "file": "audio/paper3/slide_06.mp3"
+    },
+    "slide_07": {
+      "duration": 49.32,
+      "file": "audio/paper3/slide_07.mp3"
+    },
+    "slide_08": {
+      "duration": 52.032,
+      "file": "audio/paper3/slide_08.mp3"
+    },
+    "slide_09": {
+      "duration": 49.296,
+      "file": "audio/paper3/slide_09.mp3"
+    },
+    "slide_10": {
+      "duration": 47.568,
+      "file": "audio/paper3/slide_10.mp3"
+    },
+    "slide_11": {
+      "duration": 47.568,
+      "file": "audio/paper3/slide_11.mp3"
+    },
+    "slide_12": {
+      "duration": 41.448,
+      "file": "audio/paper3/slide_12.mp3"
+    },
+    "total_duration": 575.88
+  }
+}
