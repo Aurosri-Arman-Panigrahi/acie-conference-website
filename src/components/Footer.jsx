@@ -19,15 +19,15 @@ export default function Footer() {
                 <span className="text-orange-500 text-base">📍</span>
                 <span>
                   <strong>School of Computer Engineering</strong><br />
-                  Centurion University of Technology and Management (CUTM) &amp; KIIT University<br />
-                  Bhubaneswar, Odisha – 751024, India
+                  Kalinga Institute of Industrial Technology (KIIT)<br />
+                  Patia, Bhubaneswar, Odisha – 751024, India
                 </span>
               </p>
               <p>
-                <strong>Email:</strong> <span className="text-blue-800"> contact@acieopen.com</span>
+                <strong>Email:</strong> <span className="text-blue-800"> contact@acieopen.com</span> | <span className="text-blue-800">sponsorship@acieopen.com</span>
               </p>
               <p>
-                <strong>Contact:</strong> <span className="text-blue-800 font-semibold">+91-9437376421</span>
+                <strong>Contact:</strong> <span className="text-blue-800 font-semibold">+91 1234567890 (subhradebdas)</span>
               </p>
               <p>
                 <strong>Website:</strong>{' '}
@@ -35,8 +35,8 @@ export default function Footer() {
                   acieopen.com
                 </a>{' '}
                 |{' '}
-                <a href="https://www.cutm.ac.in" target="_blank" rel="noopener noreferrer" className="text-blue-800 hover:underline">
-                  cutm.ac.in
+                <a href="https://kiit.ac.in" target="_blank" rel="noopener noreferrer" className="text-blue-800 hover:underline">
+                  kiit.ac.in
                 </a>
               </p>
             </div>
@@ -62,7 +62,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-orange-500 text-sm">✔</span>
-                Centurion University of Technology and Management
+                School of Computer Engineering, KIIT
               </li>
             </ul>
           </div>

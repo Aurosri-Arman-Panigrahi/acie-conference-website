@@ -99,22 +99,31 @@ export default function Sponsorship() {
 
       <div className="mt-0 pb-16 px-6 md:px-10 lg:px-20 bg-[#E7ECFF]" data-aos="fade-up">
         <h2 className="text-xl font-semibold text-slate-800 mb-4">
-          For Sponsorship, contact Sponsorship Chairs:
+          For Sponsorship, contact Sponsorship Chairs &amp; Coordinators:
         </h2>
         <ul className="space-y-2 text-slate-700 text-sm md:text-base">
           <li>
-            <span className="font-medium">Prof. Raj Kumar Mohanta</span> –{' '}
+            <span className="font-medium text-slate-900">subhradebdas</span> – Sponsorship Coordinator
           </li>
           <li>
-            <span className="font-medium">Assitant Professor, HOD of Computer Science and Engineering</span>
-          </li>
-          <li>
-            <a href="mailto:rajkumar.mohanta@cutm.ac.in" className="text-blue-600 hover:underline">
-              rajkumar.mohanta@cutm.ac.in
+            <span>Phone: </span>
+            <a href="tel:1234567890" className="text-blue-600 font-semibold hover:underline">
+              1234567890
             </a>
           </li>
           <li>
-            <span className="font-medium text-slate-900">Dr. Subhra Debdas</span> – Sponsorship Coordinator (Phone: +91-9437376421 | Email: contact@acieopen.com)
+            <span>Email: </span>
+            <a href="mailto:sponsorship@acieopen.com" className="text-blue-600 font-semibold hover:underline">
+              sponsorship@acieopen.com
+            </a>
+          </li>
+          <li className="pt-2">
+            <span className="font-medium">Prof. Raj Kumar Mohanta</span> – Assistant Professor, Computer Science and Engineering
+          </li>
+          <li>
+            <a href="mailto:contact@acieopen.com" className="text-blue-600 hover:underline">
+              contact@acieopen.com
+            </a>
           </li>
         </ul>
       </div>

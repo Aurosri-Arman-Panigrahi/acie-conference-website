@@ -66,12 +66,12 @@ export default function Navbar({ onOpenBrochure }) {
           </Link>
 
           {/* Desktop Navigation Links & Action Buttons (One Single Exact Row matching aisigh-sd.co.in) */}
-          <div className="hidden lg:flex items-center space-x-1.5 xl:space-x-3 2xl:space-x-4 flex-nowrap shrink-0">
+          <div className="hidden lg:flex items-center space-x-1 xl:space-x-2 2xl:space-x-3.5 flex-nowrap shrink-0">
             
             {/* HOME */}
             <Link 
               to="/" 
-              className="nav-link whitespace-nowrap text-[11px] lg:text-[12px] xl:text-[13px] font-semibold px-1 py-1"
+              className="nav-link whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
             >
               HOME
             </Link>
@@ -84,7 +84,7 @@ export default function Navbar({ onOpenBrochure }) {
             >
               <button 
                 onClick={() => setActiveDropdown(activeDropdown === 'about' ? null : 'about')}
-                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap text-[11px] lg:text-[12px] xl:text-[13px] font-semibold px-1 py-1"
+                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
               >
                 <span>ABOUT</span>
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === 'about' ? 'rotate-180' : ''}`} />
@@ -119,7 +119,7 @@ export default function Navbar({ onOpenBrochure }) {
             >
               <button 
                 onClick={() => setActiveDropdown(activeDropdown === 'authors' ? null : 'authors')}
-                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap text-[11px] lg:text-[12px] xl:text-[13px] font-semibold px-1 py-1"
+                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
               >
                 <span>AUTHORS</span>
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === 'authors' ? 'rotate-180' : ''}`} />
@@ -162,7 +162,7 @@ export default function Navbar({ onOpenBrochure }) {
             >
               <button 
                 onClick={() => setActiveDropdown(activeDropdown === 'speakers' ? null : 'speakers')}
-                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap text-[11px] lg:text-[12px] xl:text-[13px] font-semibold px-1 py-1"
+                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
               >
                 <span>SPEAKERS</span>
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === 'speakers' ? 'rotate-180' : ''}`} />
@@ -200,7 +200,7 @@ export default function Navbar({ onOpenBrochure }) {
             {/* COMMITTEE */}
             <Link 
               to="/patrons" 
-              className="nav-link whitespace-nowrap text-[11px] lg:text-[12px] xl:text-[13px] font-semibold px-1 py-1"
+              className="nav-link whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
             >
               COMMITTEE
             </Link>
@@ -213,7 +213,7 @@ export default function Navbar({ onOpenBrochure }) {
             >
               <button 
                 onClick={() => setActiveDropdown(activeDropdown === 'awards' ? null : 'awards')}
-                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap text-[11px] lg:text-[12px] xl:text-[13px] font-semibold px-1 py-1"
+                className="nav-link cursor-pointer flex items-center gap-0.5 whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
               >
                 <span>AWARDS</span>
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === 'awards' ? 'rotate-180' : ''}`} />
@@ -258,7 +258,7 @@ export default function Navbar({ onOpenBrochure }) {
             {/* ACCOMODATION */}
             <Link 
               to="/accomodation" 
-              className="nav-link whitespace-nowrap text-[11px] lg:text-[12px] xl:text-[13px] font-semibold px-1 py-1"
+              className="nav-link whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
             >
               ACCOMODATION
             </Link>
@@ -266,7 +266,7 @@ export default function Navbar({ onOpenBrochure }) {
             {/* SCHEDULE */}
             <button 
               onClick={() => handleAnchorClick('schedule')}
-              className="nav-link cursor-pointer whitespace-nowrap uppercase text-[11px] lg:text-[12px] xl:text-[13px] font-semibold px-1 py-1"
+              className="nav-link cursor-pointer whitespace-nowrap uppercase text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
             >
               SCHEDULE
             </button>
@@ -274,14 +274,14 @@ export default function Navbar({ onOpenBrochure }) {
             {/* SPONSORSHIP */}
             <Link 
               to="/sponsership" 
-              className="nav-link whitespace-nowrap text-[11px] lg:text-[12px] xl:text-[13px] font-semibold px-1 py-1"
+              className="nav-link whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold px-1 py-1"
             >
               SPONSORSHIP
             </Link>
 
             {/* REGISTRATION SOLID BLUE PILL */}
             <Link to="/registration" className="shrink-0">
-              <button className="bg-blue-600 text-white px-3 sm:px-3.5 xl:px-4 2xl:px-5 py-1.5 xl:py-2 rounded-full text-[11px] lg:text-[12px] xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer">
+              <button className="bg-blue-600 text-white px-2.5 sm:px-3 xl:px-4 py-1.5 xl:py-2 rounded-full text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer">
                 Register Online
               </button>
             </Link>
@@ -298,7 +298,7 @@ export default function Navbar({ onOpenBrochure }) {
             >
               <button 
                 type="button"
-                className="bg-blue-600 text-white px-3 sm:px-3.5 xl:px-4 2xl:px-5 py-1.5 xl:py-2 rounded-full text-[11px] lg:text-[12px] xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer"
+                className="bg-blue-600 text-white px-2.5 sm:px-3 xl:px-4 py-1.5 xl:py-2 rounded-full text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer"
               >
                 Official Brochure
               </button>

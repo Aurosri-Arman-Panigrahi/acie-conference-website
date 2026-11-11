@@ -32,7 +32,7 @@ export default function PageBanner({ title, subtitle }) {
         <div className="relative z-20 h-full flex flex-col items-center justify-center text-center px-6 gap-4">
           {/* Title with Exact Academic Gradient & Drop Shadow from aisigh-sd.co.in */}
           <h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-yellow-300 to-blue-400 uppercase font-heading tracking-wide"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-yellow-300 to-blue-400 uppercase font-heading tracking-wide px-2"
             style={{ textShadow: "2px 2px 0 rgba(0,0,0,0.5), 4px 4px 0 rgba(0,0,0,0.4)" }}
           >
             {title}
@@ -40,7 +40,7 @@ export default function PageBanner({ title, subtitle }) {
 
           {/* Subtitle */}
           {subtitle && (
-            <p className="text-base sm:text-lg md:text-xl text-blue-100 max-w-3xl opacity-90 font-medium">
+            <p className="text-xs sm:text-sm md:text-base text-blue-100 max-w-3xl opacity-90 font-medium px-2">
               {subtitle}
             </p>
           )}

@@ -130,7 +130,7 @@ export default function Home({ onOpenBrochure }) {
             {/* Main Headline with exact design colors, typography, hover transitions & animations from aisigh-sd.co.in */}
             <h1 
               data-aos="fade-right"
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-bold leading-tight text-blue-900 hover:text-blue-600 hover:scale-105 transition-all duration-300 cursor-pointer"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-[36px] xl:text-[38px] font-bold leading-tight text-blue-900 hover:text-blue-600 hover:scale-105 transition-all duration-300 cursor-pointer"
               style={{ textShadow: "0 1px 3px rgba(255,255,255,0.9)" }}
             >
               AI-Enabled Smart Solutions <br />
@@ -394,15 +394,15 @@ export default function Home({ onOpenBrochure }) {
                           decoding="async"
                         />
                         <div className="absolute inset-0 bg-black/30" />
-                        <div className="absolute bottom-4 left-4 right-4 text-white">
-                          <h4 className="font-semibold text-lg leading-snug drop-shadow">{item.name}</h4>
-                          <p className="text-sm drop-shadow opacity-90">{item.distance}</p>
+                        <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 text-white">
+                          <h4 className="font-semibold text-base sm:text-lg leading-snug drop-shadow">{item.name}</h4>
+                          <p className="text-xs sm:text-sm drop-shadow opacity-90">{item.distance}</p>
                         </div>
                       </div>
 
                       {/* Back Card Face (Revealed on 3D Flip matching original aisigh-sd.co.in) */}
                       <div 
-                        className="absolute inset-0 rounded-2xl bg-blue-900 text-white p-4 sm:p-5 flex items-center justify-center text-center shadow-lg backface-hidden"
+                        className="absolute inset-0 rounded-2xl bg-blue-900 text-white p-3.5 sm:p-5 flex items-center justify-center text-center shadow-lg backface-hidden"
                         style={{
                           backfaceVisibility: "hidden",
                           WebkitBackfaceVisibility: "hidden",

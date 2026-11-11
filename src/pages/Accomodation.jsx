@@ -27,7 +27,7 @@ export default function Accomodation() {
             Registered student participants may opt for shared accommodation in the hostel on a payment basis. Those interested are required to fill out the Google Form provided below. Hostel seats will be allocated on a{' '}
             <span className="font-semibold">first-come, first-served basis</span>. The{' '}
             <span className="font-semibold">last date</span> to submit interest for hostel accommodation is{' '}
-            <span className="font-semibold">20th December 2026</span>; requests received after this date will not be considered.
+            <span className="font-semibold">15th January 2027</span>; requests received after this date will not be considered.
           </p>
 
           <h3 className="text-2xl font-semibold text-gray-900 mb-2">
@@ -50,10 +50,10 @@ export default function Accomodation() {
             </li>
             <li>
               Working lunch will be hosted by the organizers for all registered participants during the conference ({' '}
-              <span className="font-semibold">28–30 December 2026</span>).
+              <span className="font-semibold">22–24 January 2027</span>).
             </li>
             <li>
-              Registered participants must strictly adhere to the CUTM hostel norms during their stay.
+              Registered participants must strictly adhere to the KIIT hostel norms during their stay.
             </li>
           </ul>
 

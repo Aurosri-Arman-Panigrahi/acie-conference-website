@@ -86,15 +86,15 @@ export default function CameraReadySubmission() {
               </ul>
             </li>
             <li>
-              Download the pdf file of your paper from PDF eXpressPlus website (Don’t rename it) and upload it via the CMT Portal for Camera Ready Paper Submission of AISIGHSD-2026 at
+              Download the pdf file of your paper from PDF eXpressPlus website (Don’t rename it) and upload it via the CMT Portal for Camera Ready Paper Submission of ACIE-2027 at
               <br />
               <a 
-                href="https://cmt3.research.microsoft.com/AISIGHSD2026" 
+                href="https://cmt3.research.microsoft.com/ACIE2027" 
                 className="text-orange-600 no-underline hover:underline" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                https://cmt3.research.microsoft.com/AISIGHSD2026
+                https://cmt3.research.microsoft.com/ACIE2027
               </a>
             </li>
           </ol>
