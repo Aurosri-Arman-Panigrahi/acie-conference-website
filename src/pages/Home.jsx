@@ -91,11 +91,10 @@ export default function Home({ onOpenBrochure }) {
           </div>
         </div>
 
-        {/* Linear Gradient Overlay for High Readability matching original site */}
+        {/* Transparent Overlay - Left side is transparent so campus banner photos are fully visible */}
         <div className="absolute inset-0 z-10 pointer-events-none">
           <div 
-            className="h-full w-full bg-gradient-to-r" 
-            style={{ background: "linear-gradient(to right, #f3f5f0 0%, #f3f5f0 40%, rgba(243, 245, 240, 0) 80%)" }}
+            className="h-full w-full bg-gradient-to-r from-white/10 via-transparent to-black/10" 
           />
         </div>
 
@@ -131,7 +130,8 @@ export default function Home({ onOpenBrochure }) {
             {/* Main Headline in Single Deep Blue with hover scale transition */}
             <h1 
               data-aos="fade-right"
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-bold leading-tight text-blue-900 hover:text-blue-600 hover:scale-105 transition-all duration-300 cursor-pointer"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-[36px] xl:text-[40px] font-bold leading-tight text-blue-900 hover:text-blue-700 hover:scale-105 transition-all duration-300 cursor-pointer"
+              style={{ textShadow: "0 1px 3px rgba(255,255,255,0.9), 0 2px 8px rgba(255,255,255,0.7)" }}
             >
               AI-Enabled Smart Solutions <br />
               for Industry, Governance, Healthcare <br />
@@ -141,7 +141,8 @@ export default function Home({ onOpenBrochure }) {
             {/* Host Institution with hover effect */}
             <p 
               data-aos="fade-left"
-              className="mt-6 font-semibold text-lg text-gray-700 hover:text-gray-900 hover:no-underline transition duration-300 cursor-pointer"
+              className="mt-6 font-semibold text-base sm:text-lg text-slate-800 hover:text-blue-900 hover:no-underline transition duration-300 cursor-pointer"
+              style={{ textShadow: "0 1px 2px rgba(255,255,255,0.9)" }}
             >
               Kalinga Institute of Industrial Technology, Bhubaneswar
             </p>
@@ -185,9 +186,9 @@ export default function Home({ onOpenBrochure }) {
           <div className="flex justify-center items-center" data-aos="fade-up" data-aos-delay="100">
             <div className="h-40 w-48 p-4 bg-white border-2 border-blue-300 rounded-2xl shadow-md hover:scale-110 transition-transform duration-300 flex items-center justify-center">
               <img 
-                src="/assets/images/logos/acie-minimal-3.svg" 
-                alt="ACIE Journal Logo" 
-                className="max-h-24 max-w-full object-contain" 
+                src="/assets/images/logos/acie-official-logo-transparent.png" 
+                alt="ACIE Official Logo" 
+                className="max-h-20 max-w-full object-contain" 
               />
             </div>
           </div>

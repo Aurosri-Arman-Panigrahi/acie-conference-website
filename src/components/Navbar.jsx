@@ -50,18 +50,18 @@ export default function Navbar({ onOpenBrochure }) {
       <div className="max-w-[1720px] mx-auto px-2 sm:px-4 lg:px-4 xl:px-6 h-full">
         <div className="flex justify-between items-center h-full gap-1.5 xl:gap-2">
           
-          {/* Logo Brands (Left Side: Minimal Logo 3 approved by user) */}
+          {/* Logo Brands (Official ACIE Logo from acie logo folder) */}
           <Link to="/" className="flex items-center gap-2 shrink-0 py-1 group">
             <img 
-              src="/assets/images/logos/acie-minimal-3.svg" 
+              src="/assets/images/logos/acie-official-logo-transparent.png" 
               alt="ACIE 2027 Logo" 
-              className="h-9 sm:h-10 xl:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105" 
+              className="h-8 sm:h-9 xl:h-10 w-auto object-contain transition-transform duration-200 group-hover:scale-105" 
             />
-            <div className="hidden lg:block h-6 w-[1.5px] bg-blue-300" />
+            <div className="hidden 2xl:block h-6 w-[1.5px] bg-blue-300" />
             <img 
               src="/assets/images/logos/kiit-official-logo.webp" 
               alt="KIIT University Logo" 
-              className="h-7 lg:h-8 xl:h-9 w-auto object-contain hidden xl:block" 
+              className="h-7 lg:h-8 xl:h-9 w-auto object-contain hidden 2xl:block" 
             />
           </Link>
 
@@ -279,10 +279,10 @@ export default function Navbar({ onOpenBrochure }) {
               SPONSORSHIP
             </Link>
 
-            {/* REGISTRATION SOLID BLUE PILL (Matching aisigh-sd.co.in & media_1794361692530_be0892e8) */}
+            {/* REGISTRATION SOLID BLUE PILL */}
             <Link to="/registration" className="shrink-0">
-              <button className="bg-blue-600 text-white px-4 xl:px-5 py-2 rounded-full text-[12px] xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer">
-                REGISTRATION
+              <button className="bg-blue-600 text-white px-3 sm:px-3.5 xl:px-4 2xl:px-5 py-1.5 xl:py-2 rounded-full text-[11px] lg:text-[12px] xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer">
+                Register Online
               </button>
             </Link>
 
@@ -298,9 +298,9 @@ export default function Navbar({ onOpenBrochure }) {
             >
               <button 
                 type="button"
-                className="bg-blue-600 text-white px-4 xl:px-5 py-2 rounded-full text-[12px] xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer"
+                className="bg-blue-600 text-white px-3 sm:px-3.5 xl:px-4 2xl:px-5 py-1.5 xl:py-2 rounded-full text-[11px] lg:text-[12px] xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer"
               >
-                BROCHURE
+                Official Brochure
               </button>
             </a>
 
@@ -515,7 +515,7 @@ export default function Navbar({ onOpenBrochure }) {
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full text-center bg-blue-600 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-blue-900 transition"
               >
-                REGISTRATION
+                Register Online
               </Link>
 
               <a
@@ -525,7 +525,7 @@ export default function Navbar({ onOpenBrochure }) {
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full text-center bg-blue-600 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-blue-900 transition"
               >
-                BROCHURE
+                Official Brochure
               </a>
             </div>
 

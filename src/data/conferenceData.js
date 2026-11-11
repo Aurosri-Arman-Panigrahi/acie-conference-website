@@ -529,7 +529,7 @@ export const LOGO_OPTIONS = [
     name: "Swiss Typographic Wordmark",
     concept: "Pure minimalist wide-tracking typographic letterforms with square accent dot.",
     symbolism: "International Journal Authority & Clean Modernism",
-    svgPath: "/assets/images/logos/acie-minimal-3.svg",
+    svgPath: "/assets/images/logos/acie-official-logo-transparent.png",
     colors: ["#0F172A", "#475569", "#10B981", "#CBD5E1"]
   },
   {
