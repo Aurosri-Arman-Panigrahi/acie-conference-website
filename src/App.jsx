@@ -110,11 +110,13 @@ export default function App() {
             <Route path="/all-women" element={<AllWomenAward />} />
             <Route path="/all-industry" element={<AllIndustryAward />} />
             
-            {/* Accommodation Route */}
+            {/* Accommodation Route (both spellings) */}
             <Route path="/accomodation" element={<Accomodation />} />
+            <Route path="/accommodation" element={<Accomodation />} />
             
-            {/* Sponsorship Route */}
+            {/* Sponsorship Route (both spellings) */}
             <Route path="/sponsership" element={<Sponsorship />} />
+            <Route path="/sponsorship" element={<Sponsorship />} />
             
             {/* Registration Route */}
             <Route path="/registration" element={<Registration />} />
