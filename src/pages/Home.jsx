@@ -91,8 +91,11 @@ export default function Home({ onOpenBrochure }) {
           </div>
         </div>
 
-        {/* Transparent container - no white background overlay so only text and slides remain */}
-        <div className="absolute inset-0 z-10 pointer-events-none bg-transparent" />
+        {/* Left-side subtle white gradient overlay (90% transparent = ~10% opacity white) matching aisigh-sd.co.in hero design */}
+        <div 
+          className="absolute inset-0 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to right, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.08) 25%, rgba(255,255,255,0.03) 50%, transparent 75%, transparent 100%)' }}
+        />
 
         {/* Hero Content with exact AOS animations & hover transforms */}
         <section className="relative z-20 h-full flex items-center">
