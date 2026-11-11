@@ -30,8 +30,11 @@ export default function PageBanner({ title, subtitle }) {
 
         {/* Content Overlay */}
         <div className="relative z-20 h-full flex flex-col items-center justify-center text-center px-6 gap-3">
-          {/* Title with Academic Drop Shadow */}
-          <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-white tracking-wide uppercase drop-shadow-md font-heading">
+          {/* Title with Exact Academic Gradient & Drop Shadow from aisigh-sd.co.in */}
+          <h1 
+            className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-yellow-300 to-blue-400 tracking-wide uppercase font-heading"
+            style={{ textShadow: "2px 2px 0 rgba(0,0,0,0.4), 4px 4px 0 rgba(0,0,0,0.3)" }}
+          >
             {title}
           </h1>
 

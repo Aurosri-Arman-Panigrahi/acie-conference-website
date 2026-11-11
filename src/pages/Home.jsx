@@ -103,11 +103,11 @@ export default function Home({ onOpenBrochure }) {
         <section className="relative z-20 h-full flex items-center">
           <div className="pl-6 sm:pl-10 lg:pl-16 max-w-5xl">
             
-            {/* Metadata Pills */}
+            {/* Metadata Pills matching media_1794361814835_5a750b31 & Home-7Lgsr6xV.js */}
             <div className="flex flex-wrap items-center gap-2 mb-2">
               <span 
                 data-aos="fade-up"
-                className="inline-block py-1 px-4 rounded-full bg-blue-100 text-blue-900 text-sm font-semibold mb-4 hover:bg-blue-200 transition-colors duration-300"
+                className="inline-block py-1 px-4 rounded-full bg-blue-100 text-blue-900 text-sm font-semibold mb-4 hover:bg-blue-200 transition-colors duration-300 cursor-pointer"
               >
                 📍 KIIT, BBSR • January 22–24, 2027
               </span>
@@ -115,7 +115,7 @@ export default function Home({ onOpenBrochure }) {
               <span 
                 data-aos="fade-up"
                 data-aos-delay="100"
-                className="inline-block py-1 px-4 rounded-full bg-blue-100 text-blue-900 text-sm font-semibold mb-4 hover:bg-blue-200 transition-colors duration-300"
+                className="inline-block py-1 px-4 rounded-full bg-blue-100 text-blue-900 text-sm font-semibold mb-4 hover:bg-blue-200 transition-colors duration-300 cursor-pointer"
               >
                 <a 
                   href="https://conferences.ieee.org/conferences_events/conferences/conferencedetails/70672" 
@@ -126,88 +126,47 @@ export default function Home({ onOpenBrochure }) {
                   Conference ID : 70672
                 </a>
               </span>
-
-              <span 
-                data-aos="fade-up"
-                data-aos-delay="200"
-                className="inline-block py-1 px-4 rounded-full bg-blue-100 text-blue-900 text-sm font-semibold mb-4 hover:bg-blue-200 transition-colors duration-300"
-              >
-                <a 
-                  href="https://acieopen.com/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-blue-900 hover:text-blue-600 inline-flex items-center gap-1"
-                >
-                  Indexed in ACIE Open Access Journal
-                  <ExternalLink className="w-3 h-3 ml-0.5" />
-                </a>
-              </span>
             </div>
 
             {/* Main Headline in Single Deep Blue with hover scale transition */}
             <h1 
               data-aos="fade-right"
-              className="text-xl sm:text-2xl md:text-3xl lg:text-[36px] xl:text-[40px] font-bold leading-tight text-blue-900 hover:text-blue-600 hover:scale-105 transition-all duration-300 cursor-pointer"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-bold leading-tight text-blue-900 hover:text-blue-600 hover:scale-105 transition-all duration-300 cursor-pointer"
             >
               AI-Enabled Smart Solutions <br />
               for Industry, Governance, Healthcare <br />
-              and Sustainable Development (ACIE 2027)
+              and Sustainable Development (ACIE-2027)
             </h1>
 
             {/* Host Institution with hover effect */}
             <p 
               data-aos="fade-left"
-              className="mt-4 sm:mt-5 font-semibold text-sm sm:text-base md:text-lg text-gray-700 hover:text-gray-900 hover:no-underline transition duration-300 cursor-pointer"
+              className="mt-6 font-semibold text-lg text-gray-700 hover:text-gray-900 hover:no-underline transition duration-300 cursor-pointer"
             >
-              Kalinga Institute of Industrial Technology (KIIT) Deemed to be University
+              Kalinga Institute of Industrial Technology, Bhubaneswar
             </p>
 
             <span 
               data-aos="fade-up"
-              className="inline-block py-1 px-4 rounded-full bg-blue-100 text-blue-900 text-sm font-semibold mt-4 hover:bg-blue-200 transition-colors duration-300"
+              className="inline-block py-1 px-4 rounded-full bg-blue-100 text-blue-900 text-sm font-semibold mt-4 mb-4 hover:bg-blue-200 transition-colors duration-300 cursor-pointer"
             >
               🌐 Hybrid Mode
             </span>
 
-            {/* Action Buttons */}
-            <div data-aos="fade-up" data-aos-delay="300" className="pt-6 flex flex-wrap items-center gap-3">
-              <Link
-                to="/callForPapers"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-              >
-                <span>Submit Manuscript</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                to="/registration"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-              >
-                <span>Register Online</span>
-              </Link>
-              <a
-                href="/assets/brochure/ACIE-2027-Brochure.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={onOpenBrochure}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-900 hover:bg-blue-800 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all"
-              >
-                <span>Official Brochure</span>
-              </a>
-            </div>
-
           </div>
         </section>
 
-        {/* Carousel Pagination Dots */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2.5 z-20">
+        {/* Carousel Pagination Dots matching Home-7Lgsr6xV.js & media_1794361814835_5a750b31 */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
           {[0, 1, 2, 3].map((idx) => (
             <button
               key={idx}
               type="button"
               onClick={() => setCurrentSlide(idx)}
               aria-label={`Show slide ${idx + 1}`}
-              className={`h-3 w-3 rounded-full transition-all duration-300 cursor-pointer ${
-                currentSlide === idx ? 'bg-blue-600 w-8' : 'bg-slate-400/60 hover:bg-slate-600'
+              aria-current={currentSlide === idx ? 'true' : undefined}
+              className={`h-3 w-3 rounded-full cursor-pointer transition-all duration-300 ${
+                currentSlide === idx ? 'bg-blue-600' : 'bg-white/60 hover:bg-white'
               }`}
             />
           ))}

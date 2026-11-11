@@ -279,11 +279,10 @@ export default function Navbar({ onOpenBrochure }) {
               SPONSORSHIP
             </Link>
 
-            {/* REGISTRATION SOLID BLUE PILL */}
+            {/* REGISTRATION SOLID BLUE PILL (Matching aisigh-sd.co.in & media_1794361692530_be0892e8) */}
             <Link to="/registration" className="shrink-0">
-              <button className="bg-blue-600 text-white px-3 xl:px-4 2xl:px-5 py-1.5 xl:py-2 rounded-full text-[11px] lg:text-[12px] xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer">
-                <span className="hidden 2xl:inline">Register Online</span>
-                <span className="2xl:hidden">REGISTRATION</span>
+              <button className="bg-blue-600 text-white px-4 xl:px-5 py-2 rounded-full text-[12px] xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer">
+                REGISTRATION
               </button>
             </Link>
 
@@ -299,10 +298,9 @@ export default function Navbar({ onOpenBrochure }) {
             >
               <button 
                 type="button"
-                className="bg-blue-600 text-white px-3 xl:px-4 2xl:px-5 py-1.5 xl:py-2 rounded-full text-[11px] lg:text-[12px] xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer"
+                className="bg-blue-600 text-white px-4 xl:px-5 py-2 rounded-full text-[12px] xl:text-[13px] font-semibold hover:bg-blue-900 transition whitespace-nowrap shadow-xs cursor-pointer"
               >
-                <span className="hidden 2xl:inline">Official Brochure</span>
-                <span className="2xl:hidden">BROCHURE</span>
+                BROCHURE
               </button>
             </a>
 
